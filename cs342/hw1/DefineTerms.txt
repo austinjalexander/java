@@ -1,0 +1,26 @@
+// File: DefineTerms.txt
+// Student: Austin J. Alexander
+// Assignment: Homework 1.1
+// Course: MET CS342 (FALL 2014)
+
+1. Define the following terms, as used in Java:
+
+A. protected: an access modifier allowing use of a given class' instance variables
+   and/or methods by instances of that class and its children/subclasses.
+
+B. static: a declaration modifier that implements variables/methods in a class
+   as class variables/methods (i.e., making them belong to the class, not to
+   instances of the class).
+
+C. new: an operator that instantiates a class by allocating memory for an object.
+
+D. interface: a reference type containing only constants and method signatures 
+              (although static methods can contain implementation), which describes
+              how a given class may be used (via the method signatures), thus, 
+              hiding that class' implementation details.
+
+E. abstract: a declaration modifier for classes or methods that lack implementation
+             details; in the case of abstract classes, they cannot be instantiated,
+             but they can have children/subclasses, which is usually how they are
+             used. 
+             

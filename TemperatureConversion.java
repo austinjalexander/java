@@ -15,7 +15,7 @@ $ javadoc -author -source 1.4 -public -tag param -tag precondition:a:"Preconditi
 ****************************************************************************/
 public class TemperatureConversion {
   /** 
-  * The main method pritns a Celsius to Fahrenheit conversion table.
+  * The main method prints a Celsius to Fahrenheit conversion table.
   * The String arguments (args) are not used in this implementation.
   * The bounds of the table range from -50C to +50C in 10 degree increments.
   **/
