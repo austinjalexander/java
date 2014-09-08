@@ -3,15 +3,6 @@
 // Assignment: Homework 1.2
 // Course: MET CS342 (FALL 2014)
 
-/**************************************************************************
-* The <code>ThinkingNumberGame</code> Java terminal/console application to
-* guess a pseudorandomly-generated number between 1 and 1000.
-*
-* @author <a href="mailto:austinja@bu.edu">austinja@bu.edu</a> 
-*   (Austin J. Alexander)
-* @version 1.0 - Sept 5 2014
-****************************************************************************/
-
 public class ThinkingNumberGame {
 
   public static void main(String[] args) {
