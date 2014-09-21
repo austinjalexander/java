@@ -8,23 +8,29 @@ public class DoubleTrouble {
 
   public static void main(String[] args) {  
 
-    String[] tags = { "fun", "great", "amazing" };  
+    // in this case, the data will be an array of "tags" 
+    // (e.g., for a reviews website, where each node/item gets tagged)
+    String[] tag_set_1 = { "fun", "great", "amazing" };  
+    String[] tag_set_2 = { "lame", "boring", "worst" };  
+    String[] tag_set_3 = { "ok", "maybe", "eh" };  
 
     DoublyLinkedList list = new DoublyLinkedList();
+
     System.out.println("\n<--- Add Items to List --->");
+    list.addItem(tag_set_1);
+    list.addItem(tag_set_2);
+    list.addItem(tag_set_3);
 
-    list.addItem(tags);
+    System.out.println("\n<--- Display List Items --->");
+    list.displayList();
 
-    //System.out.println("\n<--- Display List Items --->");
-    //list.displayList();
+    System.out.println("\n<--- Remove Last Item from List --->");
+    list.removeLastItem();
 
-    //System.out.println("\n<--- Remove Last Item from List --->");
-    //list.removeLastItem();
+    System.out.println("\n<--- Display List Items --->");
+    list.displayList();
 
-    //System.out.println("\n<--- Display List Items --->");
-    //list.displayList();
-
-    //System.out.println();
+    System.out.println();
 
   }
 

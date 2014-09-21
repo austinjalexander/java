@@ -30,8 +30,7 @@ public class List {
        * loop through, setting the temp node to each next node;
        * once the temp node's next node is null
        * (i.e., the temp node is the last node),
-       * create the new node with the item, 
-       * print the item number and the item,
+       * create the new node with the item, print the item,
        * and set the temp/last node's next value to the new node;
        * now that new node has an object reference, 
        * the loop will exit
@@ -96,7 +95,7 @@ public class List {
        * and set the temp node to the next node;
        * once the temp node's next node is null
        * (i.e., the temp node is the last node),
-       * print the item number and the item being removed,
+       * print the the item being removed,
        * set the new last node's next value to null
        * (it's now the true new last node),
        * set the temp node's value to null,
