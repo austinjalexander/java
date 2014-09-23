@@ -23,7 +23,6 @@ public class DoublyLinkedList {
       this.head.setPrev(null);
       System.out.println("Adding: " + this.head.toString());
       this.head.setNext(null);
-
     }
     // otherwise...
     else {
@@ -120,6 +119,5 @@ public class DoublyLinkedList {
       }
     }
   }
-
 
 }

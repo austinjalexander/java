@@ -7,9 +7,9 @@ public class ListOTen {
 
   public static void main(String[] args) {
 
-    //int[] items = {  };                                            //  0 items
-    //int[] items = { 12 };                                          //  1 item
-    int[] items = { 12, 34, 435345, -1, 12, 56, 654, 0, 90, 1 };     // 10 items
+    //int[] items = {  };                                        //  0 items
+    //int[] items = { 12 };                                      //  1 item
+    int[] items = { 12, 34, 435345, -1, 12, 56, 654, 0, 90, 1 }; // 10 items
 
     List list = new List();
     System.out.println("\n<--- Add Items to List --->");

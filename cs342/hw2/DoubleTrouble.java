@@ -5,11 +5,12 @@
 
 public class DoubleTrouble {
 
-
   public static void main(String[] args) {  
 
-    // in this case, the data will be an array of "tags" 
-    // (e.g., for a reviews website, where each node/item gets tagged)
+    // as an example for use, each node could be a review object,
+    // and each review will have data, which in this case will be an 
+    // array of "tags" (e.g., for a reviews website, 
+    // where each node/item gets tagged by users/reviewers)
     String[] tag_set_1 = { "fun", "great", "amazing" };  
     String[] tag_set_2 = { "lame", "boring", "worst" };  
     String[] tag_set_3 = { "ok", "maybe", "eh" };  
@@ -31,7 +32,6 @@ public class DoubleTrouble {
     list.displayList();
 
     System.out.println();
-
   }
 
 }

@@ -65,4 +65,5 @@ public class DoublyLinkedNode {
     }
     return data_string;
   }
+  
 }
