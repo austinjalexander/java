@@ -11,18 +11,21 @@ public class MyContacts {
 
     ContactList contact_list = new ContactList();
 
-    System.out.println(contact_list.getFirstContact());
-    System.out.println(contact_list.getNextContact());
+    contact_list.displayList();
 
     // Add new contact
-    contact_list.addNewContact("Sara Pethe", "sarapethe@bu.edu", "617-353-0092");
+    //contact_list.addNewContact("Sara Pethe", "sarapethe@bu.edu", "617-353-0092");
+    //contact_list.addNewContact("Nate Goldman", "nateg@bu.edu", "617-353-2811");
 
-    System.out.println(contact_list.getFirstContact());
+    //contact_list.displayList();
 
     // Add new contact
     contact_list.addNewContact("Nate Goldman", "nateg@bu.edu", "617-353-2811");
+    contact_list.addNewContact("Sara Pethe", "sarap@bu.edu", "617-353-1048");
+    contact_list.addNewContact("Cali Stephens", "cali@bu.edu", "617-353-0092");
 
-    System.out.println(contact_list.getFirstContact());
+    contact_list.displayList();
+
 
   }
 

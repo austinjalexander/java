@@ -21,19 +21,64 @@ public class Contact {
 
   public Contact(String full_name, String email, String phone_number) {
     this.full_name = full_name.toUpperCase();
-    this.email = email.toUpperCase();
+    this.email = email.toLowerCase();
     this.phone_number = phone_number.toUpperCase();
     this.next_contact = null;
   }
 
+  public Contact(String full_name, String email, String phone_number, Contact next_contact) {
+    this.full_name = full_name.toUpperCase();
+    this.email = email.toLowerCase();
+    this.phone_number = phone_number.toUpperCase();
+    this.next_contact = next_contact;
+  }
+
   // GETTERS 
+  public String getFullName() {
+    return this.full_name;
+  }
+
   public Contact getNextContact() {
     return this.next_contact;
   }
 
+/*
+  public Contact getNextContact() {
+    Contact next_contact_copy = new Contact();
+
+    if (this.next_contact == null) {
+      next_contact_copy = null;
+    }
+    else {
+      next_contact_copy.full_name = this.next_contact.full_name;
+      next_contact_copy.email = this.next_contact.email;
+      next_contact_copy.phone_number = this.next_contact.phone_number;
+      next_contact_copy.next_contact = this.next_contact.next_contact;     
+    }
+
+    return next_contact_copy;
+  }
+*/
   // SETTERS
   public void setNextContact(Contact next_contact) {
     this.next_contact = next_contact;
+  }
+
+  // PUBLIC METHODS
+  public String toString() {
+    return "Full Name: " + this.full_name + "\n" +
+           "Email: " + this.email + "\n" +
+           "Phone Number: " + this.phone_number + "\n";
+  }
+
+  public Boolean isNextContactNull() {
+    Boolean next_is_null = false;
+
+    if (this.next_contact == null) {
+      next_is_null = true;
+    }
+
+    return next_is_null;
   }
 
 
