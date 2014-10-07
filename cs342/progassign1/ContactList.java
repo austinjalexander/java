@@ -108,6 +108,14 @@ public class ContactList {
             continue_loop = false;
           }
 
+          // if current_contact.full_name is lexicographically before
+          // new_contact.full_name (comparison < 0),
+          // set new_contact as first contact in list  
+          else if (comparison < 0) {
+            Contact new_contact = new Contact(full_name, email, phone_number, this.first_contact));
+            this.first_contact = new_contact;
+          } 
+
         }
       }
     } 
