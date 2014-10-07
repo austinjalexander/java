@@ -25,34 +25,92 @@ public class ContactList {
     if (this.first_contact == null) {
       this.first_contact = new Contact(full_name, email, phone_number);
     }
-    // make full_name string comparison
-    int comparison = this.first_contact.getFullName().compareTo(full_name);
 
     //*** if the list has one contact ****//
-    // AND if first_contact.full_name and new_contact.full_name
-    // are lexicographically equivalent (comparison = 0), order doesn't matter,
-    // set new_contact as last contact in list
-    else if (this.first_contact.isNextContactNull() == true && comparison == 0) {
-      this.first_contact.setNextContact(new Contact(full_name, email, phone_number));
-    }
+    else if (this.first_contact.isNextContactNull() == true) {
 
-    //*** if the list has one contact ****//
-    // AND if first_contact.full_name is lexicographically after
-    // new_contact.full_name (comparison < 0),
-    // set new_contact as first contact in list  
-    else if (this.first_contact.isNextContactNull() == true && comparison < 0) {
-      Contact new_contact = new Contact(full_name, email, phone_number, this.first_contact));
-      this.first_contact = new_contact;
+      // make full_name string comparison
+      int comparison = this.first_contact.getFullName().compareTo(full_name);
+
+      // if first_contact.full_name and new_contact.full_name
+      // are lexicographically equivalent (comparison = 0), 
+      // order doesn't matter,
+      // set new_contact as last contact in list
+      if (comparison == 0) {
+        this.first_contact.setNextContact(new Contact(full_name, email, phone_number));
+      }
+
+      // if first_contact.full_name is lexicographically before
+      // new_contact.full_name (comparison < 0),
+      // set new_contact as first contact in list  
+      else if (comparison < 0) {
+        Contact new_contact = new Contact(full_name, email, phone_number, this.first_contact));
+        this.first_contact = new_contact;
+      } 
+
+      // if first_contact.full_name is lexicographically after
+      // new_contact.full_name (comparison > 0),
+      // set new_contact as last contact in list  
+      else if (comparison > 0) {
+        this.first_contact.setNextContact(new Contact(full_name, email, phone_number));
+      }
     }
 
     //*** if the list has more than one contact ****//
-    // AND if first_contact.full_name is lexicographically after
-    // new_contact.full_name (comparison < 0),
-    // set new_contact as first contact in list  
-    else if (this.first_contact.isNextContactNull() == false && comparison < 0) {
-      Contact new_contact = new Contact(full_name, email, phone_number, this.first_contact));
-      this.first_contact = new_contact;
-    }
+    else if (this.first_contact.isNextContactNull() == false) {
+
+      // make full_name string comparison
+      int comparison = this.first_contact.getFullName().compareTo(full_name);
+
+      // if first_contact.full_name and new_contact.full_name
+      // are lexicographically equivalent (comparison = 0), 
+      // order doesn't matter,
+      // set new_contact as second contact in list,
+      // move original second contact to third contact
+      if (comparison == 0) {
+        Contact second_contact = this.first_contact.getNextContact();
+
+        this.first_contact.setNextContact(new Contact(full_name, email, 
+                                                      phone_number, second_contact));
+      }
+
+      // if first_contact.full_name is lexicographically before
+      // new_contact.full_name (comparison < 0),
+      // set new_contact as first contact in list  
+      else if (comparison < 0) {
+        Contact new_contact = new Contact(full_name, email, phone_number, this.first_contact));
+        this.first_contact = new_contact;
+      } 
+
+      // if first_contact.full_name is lexicographically after
+      // new_contact.full_name (comparison > 0),
+      // loop through to find appropriate location 
+      else if (comparison > 0) {
+        Contact current_contact = this.first_contact;
+        Contact next_contact = this.first_contact.getNextContact();
+
+        Boolean continue_loop = true;
+        while (continue_loop == true) {
+
+          // make full_name string comparisons
+          int current_comparison = this.first_contact.getFullName().compareTo(full_name);
+          int next_comparison = this.first_contact.getNextContact().getFullName().compareTo(full_name);
+
+          // if current_contact.full_name and new_contact.full_name
+          // are lexicographically equivalent (comparison = 0), 
+          // order doesn't matter,
+          // set new_contact as next contact in list,
+          // move original next_contact to new next contact position,
+          // exit loop
+          if (current_comparison == 0) {
+            this.first_contact.setNextContact(new Contact(full_name, email, 
+                                                          phone_number, next_contact));
+            continue_loop = false;
+          }
+
+        }
+      }
+    } 
 
 
 
