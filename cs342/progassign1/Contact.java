@@ -3,7 +3,9 @@
 // Assignment: Programming Assignment 1
 // Course: MET CS342 (FALL 2014)
 
-public class Contact {
+import java.io.*;
+
+public class Contact implements Serializable {
 
   // INSTANCE VARIABLES
   private String full_name;
@@ -26,7 +28,8 @@ public class Contact {
     this.next_contact = null;
   }
 
-  public Contact(String full_name, String email, String phone_number, Contact next_contact) {
+  public Contact(String full_name, String email, String phone_number, 
+                 Contact next_contact) {
     this.full_name = full_name.toUpperCase();
     this.email = email.toLowerCase();
     this.phone_number = phone_number.toUpperCase();
@@ -36,6 +39,14 @@ public class Contact {
   // GETTERS 
   public String getFullName() {
     return this.full_name;
+  }
+
+  public String getEmail() {
+    return this.email;
+  }
+
+  public String getPhoneNumber() {
+    return this.phone_number;
   }
 
   public Contact getNextContact() {
