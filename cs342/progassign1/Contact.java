@@ -42,23 +42,6 @@ public class Contact {
     return this.next_contact;
   }
 
-/*
-  public Contact getNextContact() {
-    Contact next_contact_copy = new Contact();
-
-    if (this.next_contact == null) {
-      next_contact_copy = null;
-    }
-    else {
-      next_contact_copy.full_name = this.next_contact.full_name;
-      next_contact_copy.email = this.next_contact.email;
-      next_contact_copy.phone_number = this.next_contact.phone_number;
-      next_contact_copy.next_contact = this.next_contact.next_contact;     
-    }
-
-    return next_contact_copy;
-  }
-*/
   // SETTERS
   public void setNextContact(Contact next_contact) {
     this.next_contact = next_contact;
@@ -81,6 +64,5 @@ public class Contact {
     return next_is_null;
   }
 
-
-}
+} //end: public class Contact
 
