@@ -16,7 +16,8 @@ public class ContactList {
   }
 
   // PUBLIC METHODS
-  public void addNewContact(String full_name, String email, String phone_number) {
+  public void addNewContact(String full_name, String email, 
+                            String phone_number) {
 
     // capitalize full name for simpler string/character comparison
     full_name = full_name.toUpperCase();
@@ -30,9 +31,12 @@ public class ContactList {
     else if (this.first_contact.isNextContactNull() == true) {
 
       // make last name string comparison
-      /* if the first string is lexicographically equivalent to the second, (comparison = 0)
-       * if the first lstring is exicographically precedes the second, (comparison < 0)
-       * if the first string is lexicographically follows the second, (comparison > 0) */
+      /* if the first string is lexicographically 
+         equivalent to the second, (comparison = 0)
+       * if the first string lexicographically 
+         precedes the second, (comparison < 0)
+       * if the first string lexicographically 
+         follows the second, (comparison > 0) */
       int comparison = getLastName(this.first_contact.getFullName()).compareTo(getLastName(full_name));
 
       // if the new contact should be after the first contact
@@ -42,8 +46,10 @@ public class ContactList {
       }
       // if the new contact should be the new first contact
       else if (comparison > 0) {
-        // set the new contact as the first, with the original first contact as the new second
-        Contact new_contact = new Contact(full_name, email, phone_number, this.first_contact);
+        // set the new contact as the first, with the 
+        // original first contact as the new second
+        Contact new_contact = new Contact(full_name, email, phone_number, 
+                                          this.first_contact);
         this.first_contact = new_contact;
       }
     }
@@ -55,8 +61,10 @@ public class ContactList {
 
       // if the new contact should be the new first contact
       if (comparison > 0) {
-        // set the new contact as the first, with the original first contact as the new second
-        Contact new_contact = new Contact(full_name, email, phone_number, this.first_contact);
+        // set the new contact as the first, with the 
+        // original first contact as the new second
+        Contact new_contact = new Contact(full_name, email, phone_number, 
+                                          this.first_contact);
         this.first_contact = new_contact;
       }
       // otherwise, loop til the proper lexicographic location is found
@@ -77,10 +85,11 @@ public class ContactList {
             // set the new contact as the current contact's next, 
             // with the old next contact as new contact's next
             current_contact.setNextContact(new Contact(full_name, email, 
-                                                          phone_number, next_contact));
+                                                       phone_number, next_contact));
             // update the Boolean flag to exit loop
             found_location = true;
           }
+          // otherwise
           else {
             // if the end of the list has been reached
             if (next_contact.getNextContact() == null) {
@@ -157,7 +166,8 @@ public class ContactList {
           else if (counter != index) {
             // update previous and current contacts to those next in list
             previous_contact = current_contact;
-            // unless the next contact is null (i.e., the end of the list has been reached)
+            // unless the next contact is null 
+            // (i.e., the end of the list has been reached)
             if (current_contact.isNextContactNull() == false) {
               // set the current contact to the next contact
               current_contact = current_contact.getNextContact();
@@ -198,12 +208,12 @@ public class ContactList {
 
       // depending on name or email search
       if (search_type == 'S' || search_type == 's') {
-        // set Boolean flag to true is there is a name string match
+        // set Boolean flag to true if there is a name string match
         match_found = current_contact.getFullName().contains(search_string);        
       }
       else if (search_type == 'E' || search_type == 'e') {
-        // set Boolean flag to true is there is an email string match
-        match_found = current_contact.getEmail().contains(search_string);         
+        // set Boolean flag to true if there is an email string match
+        match_found = current_contact.getEmail().toUpperCase().contains(search_string);         
       }
 
       // if a match has been found
@@ -225,10 +235,10 @@ public class ContactList {
     if (number_of_matches_found == 0) {
       // let user know, depending on name or email search
       if (search_type == 'S' || search_type == 's') {
-        System.out.println("\n\tName string not found!");        
+        System.out.println("\tName string not found!");        
       }
       else if (search_type == 'E' || search_type == 'e') {
-        System.out.println("\n\tEmail string not found!");        
+        System.out.println("\tEmail string not found!");        
       }
     }
   } //end: public void searchContacts(String name_string)    
@@ -240,7 +250,7 @@ public class ContactList {
       // using the filename provided by the user,
       // opening a new file, fileoutputstream, and objectoutputstream
       File file = new File(filename);
-      FileOutputStream file_output_stream = new FileOutputStream(file);
+      FileOutputStream file_output_stream = new FileOutputStream(file, false);
       ObjectOutputStream object_output_stream = new ObjectOutputStream(file_output_stream);
 
       // set current contact to first contact

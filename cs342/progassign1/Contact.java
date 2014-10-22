@@ -75,5 +75,5 @@ public class Contact implements Serializable {
     return next_is_null;
   }
 
-} //end: public class Contact
+} //end: public class Contact implements Serializable
 

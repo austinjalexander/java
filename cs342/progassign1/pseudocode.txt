@@ -1,222 +1,264 @@
-/*** MyContacts ***/
+// PSEUDOCODE
+// Student: Austin J. Alexander
+// Assignment: Programming Assignment 1
+// Course: MET CS342 (FALL 2014)
 
+
+/*** MyContacts ***/
+	
+	MAIN
   public static void main(String[] args)
 
-    // create new contact list
+     create new contact list
 
-    // create new scanner for user input
+     create new scanner for user input
 
+     create a Boolean flag to track if the user wants to continue
+     set a counter to 0; 
+     after the first loop, it will increment (to remove the menu)
 
-    // create a Boolean flag to track is the user wants to continue
-    // set a counter to 0; after the first loop, it will increment (to remove the menu)
-
-    // while the user wants to continue
-      // show commands before the first prompt
+     while the user wants to continue
+       show menu commands before the first prompt
   
-      // display command prompt
-      // get line string from user
-      // split string at commas
-      // get first character as control command
+       display command prompt
+       get line string from user
+       split string at commas
+       get first character as control command
 
-      // use a switch statement to differentiate between control commands;
-      // based on the command, the rest of the user's input will be used in various ways
-        // if A or a
-        // if there are 4 parts to the command
-            // get the full name, email, and phone number and add the new contact
-            // let the user know
-          // otherwise
-            // say the command is unknown
-        // if D or d
-          // if there are 2 parts to the command
-            // attempt to use the 2nd part as an index number
-              // check with the user to be sure
-              // if the user is sure
-                // find and delete contact (if it exists)
-            // catch if the index isn't valid as input (e.g., it's a string)
-          // otherwise
-            // say the command is unknown
-        // if S or s
-          // if there are 2 parts to the command
-            // search for the string
-          // otherwise
-            // say the command is unknown
-        // if E or e
-          // if there are 2 parts to the command
-            // search for the string
-          // otherwise
-            // say the command is unknown
-        // if W or w
-          // if there are 2 parts to the command
-            // attempt to write to file
-          // otherwise
-            // say the command is unknown
-        // if R or r
-          // if there are 2 parts to the command
-            // attempt to read from file
-          // otherwise
-            // say the command is unknown
-        // if P or p
-          // display the contacts to the user
-        // if Q or q
-          // ask user to save contacts before closing
-          // if the user is sure
-            // ask user for filename
+       use a switch statement to differentiate between control commands;
+       based on the command, 
+       the rest of the user's input will be used in various ways
 
-      // increment counter so that command list doesn't display on every iteration
+         if A or a
+           if there are 4 parts to the command
+               get the full name, email, and phone number 
+               and add the new contact
+               let the user know
+             otherwise
+               say the command is unknown
+
+         if D or d
+           if there are 2 parts to the command
+             attempt to use the 2nd part as an index number
+               check with the user to be sure
+               if the user is sure
+                 find and delete contact (if it exists)
+             catch if the index isn't valid as input (e.g., it's a string)
+           otherwise
+             say the command is unknown
+
+         if (S or s) or (E or e)
+           if there are 2 parts to the command
+             search for the string
+           otherwise
+             say the command is unknown
+
+         if W or w
+           if there are 2 parts to the command
+             attempt to write to file
+           otherwise
+             say the command is unknown
+
+         if R or r
+           if there are 2 parts to the command
+             attempt to read from file
+           otherwise
+             say the command is unknown
+
+         if P or p
+           display the contacts to the user
+
+         if Q or q
+           ask user to save contacts before closing
+           if the user is sure
+             ask user for filename
+
+      increment counter so that command list 
+      doesn't display on every iteration
+
+
 
 /*** ContactList ***/
 
-  // PUBLIC METHODS
-  public void addNewContact(String full_name, String email, String phone_number) 
+PUBLIC METHODS
+	ADD NEW CONTACT
+  public void addNewContact(String full_name, 
+                            String email, String phone_number) 
 
-    // capitalize full name for simpler string/character comparison
+     capitalize full name for simpler string/character comparison
 
-    //*** if the list is empty ***//
-      // set the first contact to the new contact
-    //*** if the list has one contact ****//
+    *** if the list is empty ***
+       set the first contact to the new contact
 
-      // make last name string comparison
-      /* if the first string is lexicographically equivalent to the second, (comparison = 0)
-       * if the first lstring is exicographically precedes the second, (comparison < 0)
-       * if the first string is lexicographically follows the second, (comparison > 0) */
+    *** if the list has one contact ****
 
-      // if the new contact should be after the first contact
-        // set the new contact as the second contact
-      // if the new contact should be the new first contact
-        // set the new contact as the first, with the original first contact as the new second
-    //*** if the list has more than one contact ****//
+      make last name string comparison
+        if the first string is lexicographically 
+          equivalent to the second, (comparison = 0)
+        if the first string lexicographically 
+          precedes the second, (comparison < 0)
+        if the first string lexicographically 
+          follows the second, (comparison > 0)
 
-      // make full_name string comparison
+       if the new contact should be after the first contact
+         set the new contact as the second contact
+       if the new contact should be the new first contact
+         set the new contact as the first, 
+         with the original first contact as the new second
 
-      // if the new contact should be the new first contact
-        // set the new contact as the first, with the original first contact as the new second
-      // otherwise, loop til the proper lexicographic location is found
+    *** if the list has more than one contact ****
 
-        // use a Boolean flag to indicate that the loop should continue
+       make full_name string comparison
 
-          // make full_name string comparisons
+       if the new contact should be the new first contact
+          set the new contact as the first, 
+          with the original first contact as the new second
 
-          // if the proper location is found
-            // set the new contact as the current contact's next, 
-            // with the old next contact as new contact's next
-                                                          phone_number, next_contact));
-            // update the Boolean flag to exit loop
-            // if the end of the list has been reached
-              // set the new contact as the new last contact
-                                                        phone_number));   
-              // update the Boolean flag to exit loop
-            // otherwise, move to the next contacts in list
+       otherwise, loop til the proper lexicographic location is found
+
+         use a Boolean flag to indicate that the loop should continue
+
+           make full_name string comparisons
+
+           if the proper location is found
+             set the new contact as the current contact's next, 
+             with the old next contact as new contact's next
+             update the Boolean flag to exit loop
+	
+					 otherwise
+             if the end of the list has been reached
+               set the new contact as the new last contact
+             	 update the Boolean flag to exit loop
+             
+							otherwise, move to the next contacts in list
 
 
+  DELETE CONTACT
   public void deleteContact(int index) 
-    //*** if the list is empty ***//
-      // let the user know the list is empty
-    //*** if the list has one contact and index == 0 ***//
-      // set the first contact to null and let the user know
-    //*** if the list has one contact and index != 0 ***//
-      // let the user know that the index is invalid
-    //*** if the list has more than one contact ***//
 
-      // if the user wants to delete the first contact,
-      // make the second contact the new first contact
+    *** if the list is empty ***
+       let the user know the list is empty
 
-      // otherwise, loop until index is found,
-      // or the loop has extended beyond the list
+    *** if the list has one contact and index == 0 ***
+       set the first contact to null and let the user know
 
-        // store a counter
+    *** if the list has one contact and index != 0 ***
+       let the user know that the index is invalid
 
-        // store the previous and current contacts, starting at the first contact
+    *** if the list has more than one contact ***
 
-        // while the current contact is not null
+       if the user wants to delete the first contact,
+       make the second contact the new first contact
 
-          // if counter == index, the contact has been found
-            // set the previous contact to the current contact's 
-            // next contact, even if it is null
-            // display the deleted message to the user
+       otherwise, loop until index is found,
+       or the loop has extended beyond the list
 
-            // set current contact to null in order to exit the loop
-          // otherwise
-            // update previous and current contacts to those next in list
-            // unless the next contact is null (i.e., the end of the list has been reached)
-              // set the current contact to the next contact
-            // otherwise
-              // set current contact to null in order to exit the loop,
-              // since the loop went beyond the list
-              // let the user know that the index is invalid
-            // increment the counter
+         store a counter
+
+         store the previous and current contacts, starting at the first contact
+
+         while the current contact is not null
+
+           if counter == index, the contact has been found
+             set the previous contact to the current contact's 
+             next contact, even if it is null
+             display the deleted message to the user
+
+             set current contact to null in order to exit the loop
+
+           otherwise
+             update previous and current contacts to those next in list
+
+             unless the next contact is null 
+						 (i.e., the end of the list has been reached)
+               set the current contact to the next contact
+
+             otherwise
+               set current contact to null in order to exit the loop,
+               since the loop went beyond the list
+               let the user know that the index is invalid
+
+             increment the counter
 
 
+  SEARCH CONTACTS
   public void searchContacts(char search_type, String search_string) 
-    // set an index to 0 to display along with any found contacts
+     set an index to 0 to display along with any found contacts
 
-    // upcase the search string in order to make comparison easier
+     upcase the search string in order to make comparison easier
 
-    // set current contact to first contact
+     set current contact to first contact
 
-    // keep track of number of matches
-    // loop until current contact is null (i.e., end of list has been reached)
+     keep track of number of matches
+     loop until current contact is null (i.e., end of list has been reached)
 
-      // set a Boolean flag to false
+       set a Boolean flag to false
 
-      // depending on name or email search
-        // set Boolean flag to true is there is a name string match
-        // set Boolean flag to true is there is an email string match
+       depending on name or email search
+         set Boolean flag to true if there is a name string match
+         set Boolean flag to true if there is an email string match
 
-      // if a match has been found
-        // display the contact to the user
-        // increment the number of matches found
+       if a match has been found
+         display the contact to the user
+         increment the number of matches found
 
-      // get next contact
-      // increment index
+       get next contact
+       increment index
 
-    // if no matches
-      // let user know, depending on name or email search
+     if no matches
+       let user know, depending on name or email search
 
+  WRITE TO FILE
   public void writeToFile(String filename) 
 
-    // try
-      // using the filename provided by the user,
-      // opening a new file, fileoutputstream, and objectoutputstream
+     try
+       using the filename provided by the user,
+       opening a new file, fileoutputstream, and objectoutputstream
 
-      // set current contact to first contact
+       set current contact to first contact
 
-      // loop until current contact is null
-        // write the current contact to the object stream
-        // set current contact to next contact
+       loop until current contact is null
+         write the current contact to the object stream
+         set current contact to next contact
 
-      // close the objectoutputstream and fileoutputstream
+       close the objectoutputstream and fileoutputstream
 
-      // let the user know the write was successful
-    // catch any file/output issues and let the user know
+       let the user know the write was successful
+     catch any file/output issues and let the user know
 
+
+  RESTORE FROM FILE
   public void restoreFromFile(String filename) 
 
-    // try
-      // using the filename provided by the user,
-      // opening a new file, fileoutputstream, and objectoutputstream
+     try
+       using the filename provided by the user,
+       opening a new file, fileoutputstream, and objectoutputstream
 
-      // set a Boolean flag to true for continuing the loop
-        // set new contact to the current objectinputstream object
-        // if the current objectinputstream object is null
-          // set the Boolean flag to false in order to exit the loop
-        // otherwise
-          // add the new contact to the contact list
+       set a Boolean flag to true for continuing the loop
+         set new contact to the current objectinputstream object
+         if the current objectinputstream object is null
+           set the Boolean flag to false in order to exit the loop
+         otherwise
+           add the new contact to the contact list
 
-      // close the objectoutputstream and fileoutputstream
-    // in this case, the EOF is a good thing;
-    // let the user know that the contacts were successfully read
-    // catch any file/input issues and let the user know
+       close the objectoutputstream and fileoutputstream
+
+     in this case, the EOF is a good thing;
+     let the user know that the contacts were successfully read
+     catch any file/input issues and let the user know
 
 
+  PRINT LIST
   public void printList() 
-    //*** if the list is empty ***//
-      // let the user know
-    //*** if the list has one or more contacts ***//
-      // set an index to 0
-      // set the current contact as the first
+    *** if the list is empty ***
+       let the user know
 
-      // while current contact is not null
-        // display the current index and the current contact's information
-        // get next contact
-        // increment index
+    *** if the list has one or more contacts ***
+       set an index to 0
+       set the current contact as the first
+
+       while current contact is not null
+         display the current index and the current contact's information
+         get next contact
+         increment index
 
