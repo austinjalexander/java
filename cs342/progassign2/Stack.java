@@ -85,7 +85,7 @@ public class Stack {
 
       // while stack nodes exist
       while (current_node != null) {
-        System.out.println("Compare:" + new_node + " and " + current_node);
+        System.out.println("compare: " + new_node + " and " + current_node);
 
         // check if row OR cols match
         if ( (new_node.getRow() == current_node.getRow()) || 
@@ -98,13 +98,13 @@ public class Stack {
         // check if "equality" diagonals match
         else if (new_node.getSum() == current_node.getSum()) {
           // exit loop
-          System.out.println("[failed 'equality' test]");
+          System.out.println("[failed 'equality' test]\n");
           valid = false;
           current_node = null;
         }
-        // check if "parity-sequence" diagonals match:
+        // check if "difference-equality" diagonals match:
         // first check parity; if different parity, 
-        // definitely not the same "parity-sequence" diagonal
+        // definitely not the same "difference-equality" diagonal
         else if ( ((new_node.getSum()  % 2 == 0) && (current_node.getSum() % 2 == 0)) || 
                   ((new_node.getSum()  % 2 != 0) && (current_node.getSum() % 2 != 0)) ) {
             // then check if there is a match 
@@ -112,7 +112,8 @@ public class Stack {
             if ( (new_node.getRow() - current_node.getRow()) == 
                  (new_node.getCol() - current_node.getCol()) ) {
               // exit loop
-              System.out.println("[failed 'parity-sequence' test]");
+              System.out.println("[failed 'difference-equality' " + 
+                                 "test]\n");
               valid = false;
               current_node = null;
             }
@@ -133,5 +134,47 @@ public class Stack {
     }
 
     return valid;
+  }
+  public Integer[][] walkAndReturn() {
+    Integer[][] rows_and_cols = new Integer[this.size()][2];
+    if (this.top == null) {
+      System.out.println(EMPTY_STACK_MESSAGE);
+    }
+    else {
+      Node current_node = this.top;
+
+      int index = 0;
+      // while stack nodes exist
+      while (current_node != null) {
+        rows_and_cols[index][0] = current_node.getRow();
+        rows_and_cols[index][1] = current_node.getCol();
+        index++;
+        current_node = current_node.getNext();
+      } 
+
+      // sort
+      boolean sorted = false;
+      while (!sorted) {
+        int swaps = 0;
+        for (int i = 0; i < this.size(); i++) {
+          if ( (i + 1 != this.size()) && (rows_and_cols[i][0] > rows_and_cols[i + 1][0]) ) {
+            int temp_row = rows_and_cols[i][0];
+            int temp_col = rows_and_cols[i][1];
+            rows_and_cols[i][0] = rows_and_cols[i + 1][0];
+            rows_and_cols[i][1] = rows_and_cols[i + 1][1];
+            rows_and_cols[i + 1][0] = temp_row;
+            rows_and_cols[i + 1][1] = temp_col;
+            swaps++;
+          }
+        } 
+  
+        if (swaps == 0) {
+          sorted = true;
+        }        
+      }
+   
+    }
+
+    return rows_and_cols;
   }
 }
