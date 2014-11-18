@@ -7,22 +7,27 @@ public class Node {
 
   // CONSTRUCTORS
   public Node() {
+    // set instance variables to 0 or null
     this.row = 0;
     this.col = 0;
     this.next = null;
   }
   public Node(int row, int col) {
+    // set row,col to argument values;
+    // set next to null
     this.row = row;
     this.col = col;
     this.next = null;
   }
   public Node(int row, int col, Node next) {
+    // set row,col,next to argument values;
     this.row = row;
     this.col = col;
     this.next = next;
   }
 
-  // GETTERS
+  // GETTERS 
+  // (for all, simply return instance variables)
   public int getRow() {
     return this.row;
   }

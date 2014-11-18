@@ -2,7 +2,7 @@ import java.util.Random;
 
 public class EightQueens {
 
-  // set number of rows/columns
+  // set number of rows/columns as a static constant
   public static final int GRID_SIZE = 8;
 
   public static void main(String[] args) {
@@ -24,19 +24,24 @@ public class EightQueens {
     displaySolutionBoard(GRID_SIZE, stack);
   }
 
-  public static int attemptToSolve(int num_of_rows_and_cols,
-                                       Stack stack) {
-    // number of attempts after initial values
+  // PRIVATE STATIC METHODS
+  private static int attemptToSolve(int num_of_rows_and_cols,
+                                    Stack stack) {
+    // count/store number of attempts after initial values
+    // this is the value that attemptToSolve() will return
     int number_of_attempts = 0;
 
-    // create a new random object
+    // create a new random object; used to generate 
+    // new random numbers to try
     Random rand = new Random();
 
-    // create an initial, random coordinate selection
+    // *** INITIAL VALUES ** //
+    // create an initial, random coordinate selection;
+    // appropriate values are 0, 1, ..., (num_of_rows_and_cols - 1)
     int init_rand_row = rand.nextInt(num_of_rows_and_cols);
     int init_rand_col = rand.nextInt(num_of_rows_and_cols);
 
-    // display the initial selection;
+    // display the initial selection
     System.out.println("INITIAL SELECTION\n[push: (" + 
                         init_rand_row + "," + 
                         init_rand_col + ")]"); 
@@ -48,10 +53,11 @@ public class EightQueens {
     // values 0 through (num_of_rows_and_cols - 1);
     // elimate initial coordinates as future options, since
     // future options cannot have the same row or column;
-    // these arrrays will be used for future selections
+    // these new arrrays will be used for future selections
     Integer[] init_row_options = new Integer[num_of_rows_and_cols - 1];
     Integer[] init_col_options = new Integer[num_of_rows_and_cols - 1];
 
+    // put appropriate values into arrays;
     // for an initial (num_of_rows_and_cols - 1) times
     for (int i = 0; i < (num_of_rows_and_cols - 1); i++) {
       // if i != init_rand_row,
@@ -65,6 +71,7 @@ public class EightQueens {
       else if (i == init_rand_row) {
         init_row_options[i] = ++init_rand_row;
       }
+      // (do the same for col)
       // if i != init_rand_col,
       // use the value of i
       if (i != init_rand_col) {
@@ -81,6 +88,7 @@ public class EightQueens {
     // display the possible options left
     displayPossibilities(init_row_options,init_col_options); 
 
+    // *** ALL OTHER VALUES ** //
     // set a "solved" flag to use as while-loop control
     boolean solved = false;
     // while the problem is not solved, loop!
@@ -94,7 +102,7 @@ public class EightQueens {
       // randomly-generated possible-solution vectors;
       // number_of_iterations should 
       // at least equal (num_of_rows_and_cols - 1);
-      int number_of_iterations = 100;
+      int number_of_iterations = 50;
       for (int n = 0; n < number_of_iterations; n++) {
         // create new, random coordinate selections to try
         int new_rand_row_coord = rand.nextInt(row.length);
@@ -127,7 +135,6 @@ public class EightQueens {
             n = number_of_iterations;
             solved = true;
           }
-
         } 
         // if the new trial coordinates were not valid,
         // get rid of them, and display the stack state
@@ -137,13 +144,13 @@ public class EightQueens {
           stack.walk();      
         }
 
-        // at the end of each for loop, 
+        // at the end of each for-loop, 
         // display the possible options left
         displayPossibilities(row,col); 
       }
 
       // otherwise, if that for-loop solution set
-      // didn't solve the problem, 
+      // (100 iterations worth) didn't solve the problem, 
       // get rid of all coordinates except for initial ones
       if (stack.size() < num_of_rows_and_cols) {
         while (stack.size() > 1) {
@@ -157,9 +164,38 @@ public class EightQueens {
     return number_of_attempts;
   }
 
-  public static void displayPossibilities(Integer[] row, 
-                                            Integer[] col) {
-    // display numerics
+  // final ouptut after solution is found;
+  // will display a grid with coordiantes listed;
+  // in relevant locations, "Q" will be listed
+  // in place of coordinates
+  private static void displaySolutionBoard(int num_of_rows_and_cols,
+                                          Stack stack) {
+    System.out.print("\n\nSOLUTION");
+
+    // get sorted, 2-dimensional array of row and col values
+    Integer[][] rows_and_cols = stack.walkAndReturn();
+
+    // display coordinates OR display "Q"
+    for (int row = 0; row < num_of_rows_and_cols; row++) {
+      System.out.println();
+      for (int col = 0; col < num_of_rows_and_cols; col++) {
+        if ( (rows_and_cols[row][0] == row) && 
+          (rows_and_cols[row][1] == col) ) {
+          System.out.print("  Q    ");
+        } 
+        else {
+          System.out.print("(" + row + "," + col + ")  ");
+        }
+      }
+    }
+    System.out.println("\n");
+  }
+
+  // HELPER METHODS FOR attemptToSolve()
+  // display remaining possibilities 
+  private static void displayPossibilities(Integer[] row, 
+                                           Integer[] col) {
+    // display counts
     if (row.length != 1) {
       System.out.println("\n" + row.length + 
                          " sets of row,col options left\n(" +
@@ -180,17 +216,20 @@ public class EightQueens {
     } 
   }
 
-  public static Integer[] removeOptions(Integer[] old_row_or_col, 
-                                int new_rand_row_or_col_coord) {
+  // when an option set is valid, remove those
+  // values as future possibilities
+  private static Integer[] removeOptions(Integer[] old_row_or_col, 
+                                         int new_rand_row_or_col_coord) {
     // create new coordinate arrays for future possible choices,
     // with one less option for rows/columns;
     Integer[] new_row_or_col = new Integer[(old_row_or_col.length - 1)]; 
+
     // a for-loop to remove row/column values that are 
     // no longer possible options;
     // loop for current (vector lengths - 1)
     for (int i = 0; i < (new_row_or_col.length); i++) {
       // if i is less than the new valid row coord,
-      // then use i
+      // use i
       if (i < new_rand_row_or_col_coord) {
         new_row_or_col[i] = old_row_or_col[i];
       }
@@ -203,27 +242,6 @@ public class EightQueens {
 
     // return a new array with options removed
     return new_row_or_col;
-  }
-
-  public static void displaySolutionBoard(int num_of_rows_and_cols,
-                                          Stack stack) {
-    System.out.print("\n\nSOLUTION");
-
-    Integer[][] rows_and_cols = stack.walkAndReturn();
-
-    for (int row = 0; row < num_of_rows_and_cols; row++) {
-      System.out.println();
-      for (int col = 0; col < num_of_rows_and_cols; col++) {
-        if ( (rows_and_cols[row][0] == row) && 
-          (rows_and_cols[row][1] == col) ) {
-          System.out.print("  Q    ");
-        } 
-        else {
-          System.out.print("(" + row + "," + col + ")  ");
-        }
-      }
-    }
-    System.out.println("\n");
   }
 
 }
@@ -304,7 +322,7 @@ public class EightQueens {
     */
 
     /*
-    // (2,1) --> check "difference-equality" diagonal
+    // (2,1) --> check "parity-difference-equality" diagonal
     System.out.println("\n[push: (2,1)]");
     stack.push(2,1);
     // check if valid

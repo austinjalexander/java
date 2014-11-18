@@ -1,0 +1,140 @@
+EightQueens uses a relatively generic stack to 
+solve the Eight Queens Problem (using a random number generator); 
+thus, all of the solving logic has been placed 
+in the EightQueens class as static methods
+
+public class EightQueens
+
+   set number of rows/columns as a static constant
+
+     announce program start
+     instantiate new Stack object
+
+     call primary solving function;
+     return number of attempts 
+
+     display number of attempts
+
+     display solution board
+
+  PRIVATE STATIC METHODS
+  primary solving function;
+  return number of attempts
+  private static int attemptToSolve(int num_of_rows_and_cols,
+                                   Stack stack) 
+     count/store number of attempts after initial values;
+     this is the value that attemptToSolve() will return
+
+     create a new random object; used to generate 
+     new random numbers to try
+
+     *** INITIAL VALUES ** 
+     create an initial, random coordinate selection
+     appropriate values are 0, 1, ..., (num_of_rows_and_cols - 1)
+
+     display the initial selection
+
+     push these initial coordinates onto stack
+
+     create initial coordinate arrays, containing
+     values 0 through (num_of_rows_and_cols - 1);
+     elimate initial coordinates as future options, since
+     future options cannot have the same row or column;
+     these new arrrays will be used for future selections
+
+     put appropriate values into arrays;
+     for an initial (num_of_rows_and_cols - 1) times
+       if i != init_rand_row,
+       use the value of i
+
+       once i == init_rand_row,
+       pre-increment init_rand_row and use that value
+       for each subsequent loop
+
+       (do the same for col)
+       if i != init_rand_col,
+       use the value of i
+
+       once i == init_rand_col,
+       pre-increment init_rand_col and use that value
+       for each subsequent loop
+
+     display the possible options left 
+
+     *** ALL OTHER VALUES ** 
+     set a "solved" flag to use as while-loop control
+     while the problem is not solved, loop!
+       initialize new arrays for the while-loop
+       using the initial possible options
+
+       run a for-loop to solve the problem by creating a pair of
+       randomly-generated possible-solution vectors;
+       number_of_iterations should 
+       at least equal (num_of_rows_and_cols - 1);
+
+         create new, random coordinate selections to try
+
+         increment number of attempts;
+         display the new selections
+
+         push new coordinates onto stack before checking validity
+
+         check if valid coordinates;
+
+           if valid, display current stack 
+
+           remove new valid row/col coordinates from options
+
+           if at any time during the for-loop, 
+           the stack reaches the appropriate goal size,
+           exit the for-loop and the while-loop
+
+         if the new trial coordinates were not valid,
+         get rid of them, and display the stack state
+
+         at the end of each for-loop, 
+         display the possible options left
+
+       otherwise, if that for-loop solution set
+       (100 iterations worth) didn't solve the problem, 
+       get rid of all coordinates except for initial ones
+
+     return the total number of attempts
+
+  final ouptut after solution is found;
+  will display a grid with coordiantes listed;
+  in relevant locations, "Q" will be listed
+  in place of coordinates
+  public static void displaySolutionBoard(int num_of_rows_and_cols,
+                                          Stack stack) {
+     get sorted, 2-dimensional array of row and col values
+
+     display coordinates OR display "Q"
+
+  HELPER METHODS FOR attemptToSolve()
+  display remaining possibilities 
+  private static void displayPossibilities(Integer[] row, 
+                                           Integer[] col) {
+     display counts
+
+     display possibilites
+
+  when an option set is valid, remove those
+  values as future possibilities    
+  public static Integer[] removeOptions(Integer[] old_row_or_col, 
+                                        int new_rand_row_or_col_coord) {
+     create new coordinate arrays for future possible choices,
+     with one less option for rows/columns;
+
+     a for-loop to remove row/column values that are 
+     no longer possible options;
+     loop for current (vector lengths - 1)
+
+       if i is less than the new valid row coord,
+       use i
+
+       if i is >= new_rand_row_coord, 
+       skip an index in the row array
+
+     return a new array with options removed
+

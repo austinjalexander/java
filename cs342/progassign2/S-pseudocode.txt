@@ -1,0 +1,122 @@
+Last In First Out, 
+a relatively generic stack
+public class Stack 
+
+  CONSTANTS
+  private final String EMPTY_STACK_MESSAGE
+ 
+  INSTANCE VARIABLES
+  private Node top
+  private int size
+
+  CONSTRUCTORS
+  public Stack()
+
+  PUBLIC METHODS
+  public boolean push(int row, int col)
+    set pushed flag to false
+
+    if stack is empty
+      make a new top
+      increment size
+      set flag to true
+
+    otherwise, set new node to top,
+    and the old top to next
+      increment size
+      set flag to true
+
+    return flag
+
+  public boolean pop()
+    et flag to false
+    if there are nodes
+      set top to next 
+      (which will be null if size == 1)
+      decrement size
+      set flag to true
+    return flag
+
+  public boolean isEmpty() 
+    set flag to true
+    if stack has any nodes
+      set flag to false
+    return flag
+
+  public int size() 
+    return size instance variable
+
+  public String peek() 
+    if null, tell the user
+    otherwise, display node contents
+  
+  public void walk() 
+    if null, tell the user
+    otherwise
+      while stack nodes exist
+        display the contents of the current node
+        then get the next one (when null, loop will exit)
+
+  public boolean walkAndCompare() 
+    set flag to false
+
+    if stack is empty,
+    simply let the user know
+
+    if stack now has only node,
+    simply allow that it remain
+
+    else, stack already has at least one node,
+    so push new one, then compare
+
+      while stack nodes exist
+
+        check if row OR cols match
+          exit loop
+        check if "equality" diagonals match
+          exit loop
+
+        check if "parity-difference-equality" diagonals match:
+        first check parity; if different parity, 
+        definitely not the same 
+        "parity-difference-equality" diagonal
+            then check if there is a match 
+            in the same exact sequence
+              exit loop
+              set flag to false
+            otherwise, no match, and new_node is currently valid
+              set flag to true
+
+        if no matches, then new_node is currently valid
+          set flag to true
+
+    return flag
+
+  public Integer[][] walkAndReturn() 
+    create a 2-dimensional array 
+    for a row vector and a col vector
+
+    if the stack is empty, forget it
+    otherwise
+
+      set an index to 0
+      while stack nodes exist
+        set current stack values into array at index point
+        in both vectors
+        increment index
+
+      sort
+      set flag to false
+      while not sorted
+        keep track of swaps
+        for the size of the array
+          if not out of bounds and 
+          a first value is greater than a second
+            places values in temp variables and swap
+            increment swaps
+
+        if swaps ever == 0
+          set sorted to true
+
+    return the 2-dimensional array
+

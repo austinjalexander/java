@@ -1,0 +1,34 @@
+public class Node 
+
+  INSTANCE VARIABLES
+  private int row
+  private int col
+  private Node next
+
+  CONSTRUCTORS
+  public Node() 
+    set instance variables to 0 or null
+
+  public Node(int row, int col) 
+    set row,col to argument values;
+    set next to null
+
+  public Node(int row, int col, Node next) 
+    set row,col,next to argument values;
+
+  GETTERS 
+  (for all, simply return instance variables)
+  public int getRow() 
+
+  public int getCol() 
+
+  public int getSum() 
+
+  public Node getNext() 
+
+  SETTERS
+  public void setNext(Node next) 
+
+  PUBLIC METHODS
+  public String toString() 
+
