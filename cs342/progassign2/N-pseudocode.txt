@@ -1,3 +1,5 @@
+a relatively generic node
+
 public class Node 
 
   INSTANCE VARIABLES

@@ -1,5 +1,8 @@
-// Last In First Out, 
-// a relatively generic stack
+// File: Stack.java
+// Student: Austin J. Alexander
+// Assignment: Programming Assignment 2
+// Course: MET CS342 (FALL 2014)
+
 public class Stack {
 
   // CONSTANTS

@@ -2,8 +2,37 @@ public class Driver {
 
   public static void main(String[] args) {
 
-    // STACK //
+    // BINARY TREE //
     ///*
+    System.out.println("\n*** BINARY TREE ***");
+    BinaryTree binary_tree = new BinaryTree();
+
+    System.out.println("empty? " + binary_tree.isEmpty());
+
+    System.out.println("\n[enbinary_tree: 'jim','bob','bill']");
+    binary_tree.enbinary_tree("jim");
+    binary_tree.enbinary_tree("bob");
+    binary_tree.enbinary_tree("bill");
+
+    System.out.println("empty? " + binary_tree.isEmpty());
+    System.out.println("size? " + binary_tree.size());
+
+    System.out.println("\n[peek then debinary_tree 4 times]");
+    System.out.println(binary_tree.peek());
+    binary_tree.debinary_tree();
+    System.out.println(binary_tree.peek());
+    binary_tree.debinary_tree();
+    System.out.println(binary_tree.peek());
+    binary_tree.debinary_tree();
+    System.out.println(binary_tree.peek());
+    binary_tree.debinary_tree();
+
+    System.out.println("empty? " + binary_tree.isEmpty());
+    System.out.println("size? " + binary_tree.size());
+    //*/
+
+    // STACK //
+    /*
     System.out.println("\n*** STACK ***");
     Stack stack = new Stack();
 
@@ -34,7 +63,7 @@ public class Driver {
 
     
     // QUEUE //
-    ///*
+    /*
     System.out.println("\n*** QUEUE ***");
     Queue queue = new Queue();
 

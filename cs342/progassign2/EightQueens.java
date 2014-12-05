@@ -1,3 +1,8 @@
+// File: EightQueens.java
+// Student: Austin J. Alexander
+// Assignment: Programming Assignment 2
+// Course: MET CS342 (FALL 2014)
+
 import java.util.Random;
 
 public class EightQueens {
