@@ -1,0 +1,104 @@
+  /*
+  public int getDepth() {
+    int depth = traverseTreeFindDepth(0, this.root);
+
+    return (depth > 0) ? (depth + 1) : 0;
+  }
+
+  public int getDistinct() {
+    int distinct = traverseTreeCountDistinct(0, this.root);
+
+    return (distinct > 0) ? (distinct + 1) : 0;
+  }
+  */
+  public void displayTree() {
+    if (this.root == null) {
+      System.out.println("Tree is empty.");
+    }
+    else if (this.root != null) {
+      System.out.print(" root: " + this.root.getContent());
+      traverseTreeAndDisplay(this.root);
+    }
+  }
+  /*
+  public int getDeepest() {
+    traverseTreeFindDeepest(0, this.root);
+
+    return (depth > 0) ? (depth + 1) : 0;
+  }
+  */
+
+
+
+  /*
+  private int traverseTreeFindDepth(int depth, 
+                                    TreeNode current_tree_node) {
+    int old_depth = depth;
+    int left = 0;
+    int right = 0;
+    // if tree is not empty
+    // (if tree is empty, depth will remain zero)
+    if (this.root != null) {
+
+      // go left
+      if (current_tree_node.getLeft() != null) {
+        left = traverseTreeFindDepth((depth + 1), 
+                                    current_tree_node.getLeft());
+      }
+      // go right
+      if (current_tree_node.getRight() != null) {
+        right = traverseTreeFindDepth((depth + 1),
+                                    current_tree_node.getRight());
+      }
+
+      // if either left or right nodes
+      if ((left != 0) || (right != 0)) {
+        depth = (left >= right) ? left : right;
+
+        if (depth < 10) {
+          System.out.println("depth: " + depth + " content: " + current_tree_node.getContent());
+        }
+        
+      }
+    }
+
+
+    return depth;
+  }
+*/
+  private int traverseTreeCountDistinct(int distinct, 
+                                       TreeNode current_tree_node) {
+    // if tree is not empty
+    // (if tree is empty, depth will remain zero)
+    if (this.root != null) {
+
+      // go left
+      if (current_tree_node.getLeft() != null) {
+        distinct = traverseTreeCountDistinct((distinct + 1), 
+                                    current_tree_node.getLeft());
+      }
+      // go right
+      if (current_tree_node.getRight() != null) {
+        distinct = traverseTreeCountDistinct((distinct + 1),
+                                    current_tree_node.getRight());
+      }
+
+    }
+    
+    return distinct;
+  }
+
+  private void traverseTreeAndDisplay(TreeNode current_tree_node) {
+      // go left
+      if (current_tree_node.getLeft() != null) {
+        System.out.print(" -> L: " + current_tree_node.getLeft().getContent());
+        traverseTreeAndDisplay(current_tree_node.getLeft());
+      }
+      // go right
+      if (current_tree_node.getRight() != null) {
+        System.out.print(" -> R: " + current_tree_node.getRight().getContent());
+        traverseTreeAndDisplay(current_tree_node.getRight());
+      }
+
+      System.out.println();
+  }

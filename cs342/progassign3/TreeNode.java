@@ -12,12 +12,14 @@ public class TreeNode {
   private TreeNode right;
 
   // CONSTRUCTORS
+  // default constructor (not used in TextMine)
   public TreeNode() {
     this.content = null;
     this.frequency = 0;
     this.left = null;
     this.right = null;
   }
+  // constructor that sets frequency to 1 upon instantiation
   public TreeNode(String content) {
     this.content = content;
     this.frequency++;
