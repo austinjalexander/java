@@ -1,0 +1,189 @@
+File: pseudocode.txt
+Student: Austin J. Alexander
+Assignment: Programming Assignment 3
+Course: MET CS342 (FALL 2014)
+
+DRIVER
+public class TextMine
+
+  MAIN
+    welcome user
+    instantiate new binary tree
+
+    try
+      using the filename provided by the user,
+      opening a new file, file_input_stream, and scanner
+
+      loop while text in file
+        get next word
+        strip spaces and non a-z or A-Z characters and lowercasify
+      
+        add content to tree
+
+      close file_input_stream
+
+    catch any file/input issues and let the user know
+
+    search for specfic term frequencies
+  
+    for the length of the search terms array, loop
+        print out the search term and its frequency
+
+    display stats
+
+    say bye to user
+
+BINARY TREE STRUCTURE
+public class BinaryTree 
+
+  INSTANCE VARIABLES
+  TreeNode root
+  TreeNode most_frequent
+  int distinct
+  int depth
+  TreeNode deepest
+
+  CONSTRUCTORS
+  set instance variables to 0 or null
+  public BinaryTree()
+
+  PUBLIC METHODS
+  add content string to tree (via a node)
+  public void addContent(String content) 
+    if the tree is empty, add node as root
+    if tree is not empty, traverse for the right location
+
+  search nodes in tree for content string
+  public int searchContent(String content)
+    set frequency to 0
+
+    if tree is not empty, search for term and its frequency
+    (if tree is empty, frequency will remain 0)
+
+    return frequency
+
+  show tree state to user
+  public void displayStats() {
+
+    if the tree is empty
+      display that message to the user
+
+    if there is a root, traverse the tree;
+    display state values (adding 1 [the root] to depth display value)
+
+      traverse tree
+
+      display depth
+
+      display distinct
+
+      display root content
+
+      display deepest content
+
+      display deepest word
+
+  PRIVATE METHODS
+  reset state to constructor defaults (0, null)
+  private void resetStats()
+
+  if there is a root, reset stats and traverse list;
+  private void traverse() 
+
+  add or search for a node and its content
+  private int traverseTreeAddOrSearch(String function, 
+                                      String content, 
+                                      TreeNode current_tree_node)
+    frequency (set to 0) for searching
+    (gets returned/sent back up the recursion pipe)
+
+    make string comparison
+
+    if the new content is lexicographically 
+    equivalent to the current node string content, (comparison == 0)
+      if adding, update frequency
+
+      if searching, capture frequency
+
+    if the new content lexicographically 
+    precedes the current node string content, (comparison < 0),
+    go left
+      for adding, if left node is empty, create node there;
+      for search, content was not found, frequency will remain 0
+
+      otherwise, keep traversing left;
+      hold on to frequency for search
+
+    if the new content lexicographically 
+    follows the current node string content, (comparison > 0),
+    go right
+      for adding, if left node is empty, create node there;
+      for search, content was not found, frequency will remain 0
+
+      otherwise, keep traversing right;
+      hold on to frequency for search
+
+    return frequency 
+    (garbage if adding)
+
+  traverse the tree, and keep track of stats
+  private void traverseTree(int depth, 
+                            TreeNode current_tree_node) 
+    
+    count number of nodes crossed (hit once per method call)
+
+    if most_frequent has not been set, set to current;
+    otherwise, if the current node frequency
+     is higher than most_frequent, update most_frequent
+
+    if reached a node without further leaves,
+    set tree depth to current depth, 
+    and tree deepest to current deepest;
+    depth >= this.depth will give ties for depth to the furthest-right;
+
+    lefts go first;
+    if node has a left leaf, go left;
+    send an increased depth into function
+    (not increased here since, when the function returns here,
+    depth needs to stay the same value for traversing right)
+
+    rights go second;
+    if node has a right leaf, go right;
+    send an increased depth into function (same logic as above)
+
+TREE NODE
+public class TreeNode 
+
+  INSTANCE VARIABLES
+  String content
+  int frequency
+  TreeNode left
+  TreeNode right
+
+  CONSTRUCTORS
+  default constructor (not used in TextMine)
+  public TreeNode() 
+
+  constructor that sets frequency to 1 upon instantiation
+  public TreeNode(String content) 
+
+
+  GETTERS
+  public String getContent()
+
+  public int getFrequency()
+
+  public TreeNode getLeft()
+
+  public TreeNode getRight()
+
+  SETTERS
+  public void setContent(String content)
+
+  public void setLeft(TreeNode left)
+
+  public void setRight(TreeNode right)
+
+  PUBLIC METHODS
+  return an incremented frequency
+  public int updateContentFrequency()

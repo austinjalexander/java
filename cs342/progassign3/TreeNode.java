@@ -53,6 +53,7 @@ public class TreeNode {
   }
 
   // PUBLIC METHODS
+  // return an incremented frequency
   public int updateContentFrequency() {
     return ++this.frequency;
   }

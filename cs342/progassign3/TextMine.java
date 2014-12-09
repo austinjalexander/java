@@ -11,7 +11,9 @@ public class TextMine {
   public static void main(String[] args) {
 
     // BINARY TREE //
+    // welcome user
     System.out.println("\n< < < * * * TeXt MiNe * * * > > >");
+    // instantiate new binary tree
     BinaryTree binary_tree = new BinaryTree();
 //*
     // try
@@ -86,6 +88,7 @@ public class TextMine {
     binary_tree.displayStats();
 //*/
 
+    // say bye to user
     System.out.println("\n> > > * * * fin * * * < < <\n\n");
 
   }
