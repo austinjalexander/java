@@ -2,34 +2,6 @@ public class Driver {
 
   public static void main(String[] args) {
 
-    // BINARY TREE //
-    ///*
-    System.out.println("\n*** BINARY TREE ***");
-    BinaryTree binary_tree = new BinaryTree();
-
-    System.out.println("empty? " + binary_tree.isEmpty());
-
-    System.out.println("\n[enbinary_tree: 'jim','bob','bill']");
-    binary_tree.enbinary_tree("jim");
-    binary_tree.enbinary_tree("bob");
-    binary_tree.enbinary_tree("bill");
-
-    System.out.println("empty? " + binary_tree.isEmpty());
-    System.out.println("size? " + binary_tree.size());
-
-    System.out.println("\n[peek then debinary_tree 4 times]");
-    System.out.println(binary_tree.peek());
-    binary_tree.debinary_tree();
-    System.out.println(binary_tree.peek());
-    binary_tree.debinary_tree();
-    System.out.println(binary_tree.peek());
-    binary_tree.debinary_tree();
-    System.out.println(binary_tree.peek());
-    binary_tree.debinary_tree();
-
-    System.out.println("empty? " + binary_tree.isEmpty());
-    System.out.println("size? " + binary_tree.size());
-    //*/
 
     // STACK //
     /*
@@ -86,6 +58,35 @@ public class Driver {
     queue.dequeue();
     System.out.println(queue.peek());
     queue.dequeue();
+
+    System.out.println("empty? " + queue.isEmpty());
+    System.out.println("size? " + queue.size());
+    //*/
+
+    // LINKED LIST //
+    /*
+    System.out.println("\n*** LINKED LIST ***");
+    List list = new List();
+
+    System.out.println("empty? " + list.isEmpty());
+
+    System.out.println("\n[enlist: 'jim','bob','bill']");
+    list.enlist("jim");
+    list.enlist("bob");
+    list.enlist("bill");
+
+    System.out.println("empty? " + list.isEmpty());
+    System.out.println("size? " + list.size());
+
+    System.out.println("\n[peek then delist 4 times]");
+    System.out.println(list.peek());
+    list.delist();
+    System.out.println(list.peek());
+    list.delist();
+    System.out.println(list.peek());
+    list.delist();
+    System.out.println(list.peek());
+    list.dequeue();
 
     System.out.println("empty? " + queue.isEmpty());
     System.out.println("size? " + queue.size());
