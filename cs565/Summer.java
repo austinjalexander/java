@@ -29,7 +29,7 @@ public class Summer {
     System.out.println("\t<------- END ------->\n");
   }
 
-  public static int getUserInput() {
+  private static int getUserInput() {
     Scanner user_input = new Scanner(System.in);
     System.out.print("Please enter an integer, n > 0, to sum: ");
     int n = 0;
@@ -43,7 +43,7 @@ public class Summer {
     return n;
   }
 
-  public static void singleWhile(int n, int sum, int even_sum,
+  private static void singleWhile(int n, int sum, int even_sum,
                                   int odd_sum) {
     System.out.println("\n\t(single while, with %)");
     int i = 1;
@@ -61,7 +61,7 @@ public class Summer {
     display(sum, even_sum, odd_sum);
   }
 
-  public static void separateWhiles(int n, int sum, int even_sum,
+  private static void separateWhiles(int n, int sum, int even_sum,
                                      int odd_sum) {
     System.out.println("\t(three whiles, no %)");
     int i = 1;
@@ -89,7 +89,7 @@ public class Summer {
     display(sum, even_sum, odd_sum);
   }
 
-  public static void display(int sum, int even_sum, int odd_sum) {
+  private static void display(int sum, int even_sum, int odd_sum) {
     System.out.println("Sum of integers, 1 to n (inclusive) = " 
                        + sum);
     System.out.println("Sum of even integers, 1 to n (inclusive) = " 
