@@ -1,18 +1,18 @@
-// File: Summer.java
+// File: Summation.java
 // Student: Austin J. Alexander
 // Assignment: HW 1
 // Course: MET CS565 (SPRING 2015)
 
 import java.util.Scanner;
 
-public class Summer {
+public class Summation {
 
   public static void main(String[] args) {
 
     String FULLNAME = "Austin J. Alexander";
 
     System.out.println("\n\t  " + FULLNAME + "\n");
-    System.out.println("\t<------- SUMMER ------->\n");
+    System.out.println("\t<------- SUMMATION ------->\n");
 
     int n = 0;
     while (n <= 0) {
@@ -31,7 +31,7 @@ public class Summer {
 
   private static int getUserInput() {
     Scanner user_input = new Scanner(System.in);
-    System.out.print("Please enter an integer, n > 0, to sum: ");
+    System.out.print("Please enter an integer n, n > 0, to sum all positive integers, [1,n]: ");
     int n = 0;
     try {
       n = Integer.parseInt(user_input.nextLine());
@@ -45,7 +45,7 @@ public class Summer {
 
   private static void singleWhile(int n, int sum, int even_sum,
                                   int odd_sum) {
-    System.out.println("\n\t(single while, with %)");
+    System.out.println("\n\t(single while loop, with %)");
     int i = 1;
     while (i <= n) {
       sum += i;
@@ -63,7 +63,7 @@ public class Summer {
 
   private static void separateWhiles(int n, int sum, int even_sum,
                                      int odd_sum) {
-    System.out.println("\t(three whiles, no %)");
+    System.out.println("\t(three while loops, no %)");
     int i = 1;
     while (i <= n) {
       sum += i;
