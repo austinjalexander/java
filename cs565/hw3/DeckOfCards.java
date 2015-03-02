@@ -9,14 +9,14 @@ public class DeckOfCards {
 
   private Card[] deck;
   private int current_card;
+  private static final String[] faces = {"Ace", "Deuce", "Three", "Four", "Five", "Six",
+                    "Seven", "Eight", "Nine", "Ten", "Jack", "Queen", "King"};
+  private static final String[] suits = {"Hearts", "Diamonds", "Clubs", "Spades"};
   private static final int NUMBER_OF_CARDS = 52;
 
   private static final SecureRandom random_numbers = new SecureRandom();
 
   public DeckOfCards() {
-    String[] faces = {"Ace", "Deuce", "Three", "Four", "Five", "Six",
-                      "Seven", "Eight", "Nine", "Ten", "Jack", "Queen", "King"};
-    String[] suits = {"Hearts", "Diamonds", "Clubs", "Spades"};
 
     deck = new Card[NUMBER_OF_CARDS];
     current_card = 0;
@@ -45,6 +45,14 @@ public class DeckOfCards {
     else {
       return null;
     }
+  }
+
+  public String[] getFaces() {
+    return this.faces;
+  }
+
+  public String[] getSuits() {
+    return this.suits;
   }
 
 }
