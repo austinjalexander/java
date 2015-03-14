@@ -1,7 +1,10 @@
 // File: Card.java
 // Student: Austin J. Alexander
-// Assignment: HW 2.2
+// Assignment: HW 3.2
 // Course: MET CS565 (SPRING 2015)
+
+// *** PLEASE NOTE: AS DIRECTED BY THE INSTRUCTIONS, THIS CODE
+// *** DIRECTLY COPIES THE CODE IN THE TEXTBOOK IN NUMEROUS PLACES
 
 public class Card {
 

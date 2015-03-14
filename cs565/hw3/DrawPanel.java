@@ -1,6 +1,6 @@
 // File: DrawPanel.java
 // Student: Austin J. Alexander
-// Assignment: HW 2.1
+// Assignment: HW 3.1
 // Course: MET CS565 (SPRING 2015)
 
 import java.awt.Color;
@@ -16,7 +16,7 @@ public class DrawPanel extends JPanel {
     int width = getWidth();
     int height = getHeight();
 
-    // smallest circle have a radius of 25
+    // smallest circle should have a radius of 25
     int radius = 5*25; // 125
 
     // draw grid lines to ensure circles are centered
