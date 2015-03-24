@@ -21,36 +21,33 @@ public class DrawPanel extends JPanel {
   private final int BOUNDARY = 400;
   private final int COLOR_MAX = 256;
   private SecureRandom random_numbers = new SecureRandom();
-  private MyShape[] lines; // array of lines
-  private MyShape[] rectangles; // array of rectangles
-  private MyShape[] ovals; // array of ovals
+  private MyShape[] shapes;
+  private int num_lines;
+  private int num_rects;
+  private int num_ovals;
 
   // CONSTUCTOR
   // constructor, creates a panel with random shapes
   public DrawPanel() {
     setBackground(Color.WHITE);
 
-    // for each shape class, create an array with random length
-    this.lines = new MyLine[1 + random_numbers.nextInt(5)];
-    this.rectangles = new MyRectangle[1 + random_numbers.nextInt(5)];
-    this.ovals = new MyOval[1 + random_numbers.nextInt(5)];
+    // for each shape class, generate a random number
+    this.num_lines = 1 + random_numbers.nextInt(5);
+    this.num_rects = 1 + random_numbers.nextInt(5);
+    this.num_ovals = 1 + random_numbers.nextInt(5);
 
-    // create lines
-    createShapes(this.lines);
+    // create new shapes array
+    this.shapes = new MyShape[this.num_lines + this.num_rects + this.num_ovals];
 
-    // create rectangles
-    createShapes(this.rectangles);
-
-    // create ovals
-    createShapes(this.ovals);
-
+    // create shapes
+    createShapes();
   }
 
   // HELPER METHODS
   // create shapes
-  public void createShapes(Object[] shapes) {
+  public void createShapes() {
     // loop through the shapes array
-    for (int count = 0; count < shapes.length; count++) {
+    for (int count = 0; count < this.shapes.length; count++) {
 
       // generate random coordinates
       int x1 = random_numbers.nextInt(BOUNDARY);
@@ -63,22 +60,22 @@ public class DrawPanel extends JPanel {
                               random_numbers.nextInt(COLOR_MAX),
                               random_numbers.nextInt(COLOR_MAX));
 
-      // add a shape to the list of shapes to be displayed
-      // if line class
-      if (shapes instanceof MyLine[]) {
-        shapes[count] = new MyLine(x1, y1, x2, y2, color);
+      // add shapes to the list of shapes to be displayed
+      // lines
+      if (count < this.num_lines) {
+        this.shapes[count] = new MyLine(x1, y1, x2, y2, color);
       }
-      // if rectangle class
-      else if (shapes instanceof MyRectangle[]) {
+      // rectangles
+      else if (count < (this.num_lines+this.num_rects)) {
         // odd-indexed shapes are filled
         boolean fill_flag = (count % 2 == 0) ? false : true;
-        shapes[count] = new MyRectangle(x1, y1, x2, y2, color, fill_flag);
+        this.shapes[count] = new MyRectangle(x1, y1, x2, y2, color, fill_flag);
       }
-      // if oval class
-      else if (shapes instanceof MyOval[]) {
+      // ovals
+      else if (count < (this.num_lines+this.num_rects+this.num_ovals)) {
         // odd-indexed shapes are filled
         boolean fill_flag = (count % 2 == 0) ? false : true;
-        shapes[count] = new MyOval(x1, y1, x2, y2, color, fill_flag);
+        this.shapes[count] = new MyOval(x1, y1, x2, y2, color, fill_flag);
       }
     }
   } 
@@ -86,32 +83,15 @@ public class DrawPanel extends JPanel {
   public void paintComponent(Graphics g) {
     super.paintComponent(g);
 
-    // draw the lines
-    for (MyShape line : this.lines) {
-      line.draw(g);
-    }
-
-    // draw the rectangles
-    for (MyShape rectangle : this.rectangles) {
-      rectangle.draw(g);
-    }
-
-    // draw the oval
-    for (MyShape oval : this.ovals) {
-      oval.draw(g);
+    // draw the shapes
+    for (MyShape shape : this.shapes) {
+      shape.draw(g);
     }
   }
   public String makeStatusLabel() {
-    String status_label = "";
-
-    // for line class
-      status_label += "Lines: " + this.lines.length + ", ";
-    // for rectangle class
-      status_label += "Ovals: " + this.ovals.length + ", ";
-    // for oval class
-      status_label += "Rectangles: " + this.rectangles.length;
-
-    return status_label;
+    return "Lines: " + this.num_lines + ", " +
+           "Ovals: " + this.num_ovals + ", " + 
+           "Rectangles: " + this.num_rects;
   }
 } // end class DrawPanel
 
