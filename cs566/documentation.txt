@@ -1,0 +1,14 @@
+a) Java 8, Mac OS 10.9.5, Sublime Text, Terminal
+
+b) In a UNIX-like environment, if javac is installed, using a terminal, 
+change the current directory to the directory of this file 
+(and its associated files). Since there is an included Makefile, 
+if Make is installed, simply run 'make', which will run 
+'javac *.java && java IntegerStore'; if Make is not installed, 
+run the latter combination of commands or whatever if appropriate for 
+the user's system configurations.
+
+c) The data structure is essentially a triply-linked list as each node 
+has the potential to link to a 'parent' and both left and right 'children'.
+
+d) 

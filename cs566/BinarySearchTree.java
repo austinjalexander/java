@@ -6,11 +6,16 @@
 public class BinarySearchTree {
 
   // INSTANCE VARIABLES
-  private Node root;
-  private int key;
+  public Node root; // usually, this 
 
   // CONSTRUCTORS
   public BinarySearchTree() {
     this.root = null;
   }
+
+  // HELPER METHOD
+  public void reset() {
+    this.root = null;
+  }
+
 }
