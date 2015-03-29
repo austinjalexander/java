@@ -165,6 +165,8 @@ public class IntegerStore {
       else
         treeInsertRecursive(T, x.right, z);
     }
+    // set parent of z to x
+    z.p = x;
   } // end: public static void treeInsertRecursive(BinarySearchTree T, Node x, Node z)
 
   public static void inorderTreeWalk(Node x) {
