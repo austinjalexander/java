@@ -17,9 +17,10 @@ public class IntegerStoreTest {
     treeInsert(binary_search_tree, new Node(7));
     treeInsert(binary_search_tree, new Node(2));
     treeInsert(binary_search_tree, new Node(5));
+    //treeInsert(binary_search_tree, new Node(4));
     treeInsert(binary_search_tree, new Node(8));
     inorderTreeWalk(binary_search_tree.root);
-    //treeDelete(binary_search_tree, treeSearch(binary_search_tree.root, 7));
+    //treeDelete(binary_search_tree, treeSearch(binary_search_tree.root, 4));
     System.out.println();
     inorderTreeWalk(binary_search_tree.root);
     System.out.println();
@@ -102,6 +103,8 @@ public class IntegerStoreTest {
       else
         treeInsertRecursive(T, x.right, z);
     }
+    // set parent of z to x
+    z.p = x;
   } // end: public static void treeInsertRecursive(BinarySearchTree T, Node x, Node z)
 
   public static void inorderTreeWalk(Node x) {
