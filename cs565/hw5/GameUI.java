@@ -139,35 +139,43 @@ public class GameUI extends JFrame {
         // otherwise, if the current guess is not the number to guess
         else if (current_user_guess != number_to_guess) {
 
-          // if guess is too high
-          if (current_user_guess > number_to_guess) {
-            message.setText("Too High!");
+          // if the guess is out of range,
+          // alert the user
+          if ( (current_user_guess < 1) || (current_user_guess > 1000) ) {
+            message.setText("Out of range!");
           }
-          // if guess is too low
-          else if (current_user_guess < number_to_guess) {
-            message.setText("Too Low!");
-          }
-
-          // calculate the absolute difference between the 
-          // the number to guess and the current guess
-          current_guess_diff = Math.abs(number_to_guess - current_user_guess);
-
-          // if this isn't the first guess,
-          // compare this guess to the last one
-          if (last_guess_diff != null) {
-
-            // if the current guess is farther away from the number to guess
-            // than the last guess
-            if (current_guess_diff > last_guess_diff) {
-              // set background to blue
-              getContentPane().setBackground(Color.BLUE);
+          // otherwise
+          else {
+            // if guess is too high
+            if (current_user_guess > number_to_guess) {
+              message.setText("Too High!");
             }
-            // if the current guess is closer to the number to guess
-            // than the last guess
-            else if (current_guess_diff < last_guess_diff) {
-              // set background to red
-              getContentPane().setBackground(Color.RED);
+            // if guess is too low
+            else if (current_user_guess < number_to_guess) {
+              message.setText("Too Low!");
             }
+
+            // calculate the absolute difference between the 
+            // the number to guess and the current guess
+            current_guess_diff = Math.abs(number_to_guess - current_user_guess);
+
+            // if this isn't the first guess,
+            // compare this guess to the last one
+            if (last_guess_diff != null) {
+
+              // if the current guess is farther away from the number to guess
+              // than the last guess
+              if (current_guess_diff > last_guess_diff) {
+                // set background to blue
+                getContentPane().setBackground(Color.BLUE);
+              }
+              // if the current guess is closer to the number to guess
+              // than the last guess
+              else if (current_guess_diff < last_guess_diff) {
+                // set background to red
+                getContentPane().setBackground(Color.RED);
+              }
+            }//end: else
           }//end: if (last_user_guess != null)
 
           // set last guess difference to the current difference
