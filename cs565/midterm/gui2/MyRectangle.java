@@ -1,6 +1,6 @@
 // File: MyRectangle.java
 // Student: Austin J. Alexander
-// Assignment: Midterm Exercise 3 (10.1 [which also relied on 9.1])
+// Assignment: Midterm Problem 3 (10.1 [which also relied on 9.1])
 // Course: MET CS565 (SPRING 2015)
 /*** *** ***
      ATTENTION: PER THE INSTRUCTIONS, THE MAJORITY OF THE CODE IN THIS 

@@ -3,11 +3,9 @@
 // Assignment: Programming Assignment 1
 // Course: MET CS566 (SPRING 2015)
 
-// PLEASE NOTE: in order to follow,
-    // as precisely as possible in Java,
-    // the TREE-INSERT algorithm/pseudocode in _______,
-    // the common software practice of making instance variables private
-// and implementing 'setter' and 'getter' methods was not done
+// REGARDING THE IMPLEMENTATION DETAILS BELOW 
+// (E.G., THE USE OF PUBLIC INSTANCE VARIABLES), 
+// PLEASE SEE THE NOTE (d) IN THE DOCUMENTATION FILE
 
 public class Node {
 

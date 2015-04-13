@@ -1,3 +1,8 @@
+// File: PolynomialTest.java
+// Student: Austin J. Alexander
+// Assignment: Midterm Problem 1
+// Course: MET CS565 (SPRING 2015)
+
 public class PolynomialTest {
 
   public static void main(String[] args) {

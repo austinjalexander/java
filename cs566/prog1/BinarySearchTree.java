@@ -3,10 +3,14 @@
 // Assignment: Programming Assignment 1
 // Course: MET CS566 (SPRING 2015)
 
+// REGARDING THE IMPLEMENTATION DETAILS BELOW 
+// (E.G., THE USE OF PUBLIC INSTANCE VARIABLES), 
+// PLEASE SEE THE NOTE (d) IN THE DOCUMENTATION FILE
+
 public class BinarySearchTree {
 
   // INSTANCE VARIABLES
-  public Node root; // usually, this 
+  public Node root;
 
   // CONSTRUCTORS
   public BinarySearchTree() {

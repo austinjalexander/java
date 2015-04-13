@@ -117,18 +117,10 @@ public class IntegerStore {
     System.out.print("[" + key + "] ");
   } // end: public static void print(int key)
 
-  // TEXTBOOK ALGORITHMS
-  // As instructed, the following algorithms follow, 
-  // as precisely as possible in Java,
-  // the algorithms presented as pseudocode in 
-  // Corment, Leiserson, Rivest, and Stein's Introduction to Algorithms.
-  // From a software design perspective, the code is efficient to be sure
-  // but, in my opinion, at the expense of human readability.
-  // Moreover, common software design principles are ignored; 
-  // for example, instance variables (e.g., root, key, etc.) are 
-  // accessed directly (and, thus, are public) as opposed to being 
-  // accessed through 'setter'/'getter' methods.
-
+  // *** TEXTBOOK ALGORITHMS ***
+  // REGARDING THE IMPLEMENTATION DETAILS BELOW 
+  // (E.G., THE USE OF PUBLIC INSTANCE VARIABLES), 
+  // PLEASE SEE THE NOTE (d) IN THE DOCUMENTATION FILE
   public static void treeInsert(BinarySearchTree T, Node z) {
     Node y = null;
     Node x = T.root;
