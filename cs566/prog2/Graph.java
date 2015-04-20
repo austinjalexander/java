@@ -39,18 +39,36 @@ public class Graph {
       System.out.println();
     }
   }
+
   public void printAdjTime() {
     System.out.println("\nprintAdjTime():");
-    for (Vertex u : this.V) {
-      System.out.print(u.name + "(" + u.d + "/" + u.f + ")" + 
-                       "[" + u.color + "]" + ":");
-      for (Vertex v : this.Adj[u.name-1]) {
-        System.out.print(v.name + "(" + v.d + "/" + v.f + ")" + 
-                       "[" + v.color + "]" + ",");
+    for (int i = 0; i < this.V.length; i++) {
+
+      System.out.print(this.V[i].name + "(" + this.V[i].d + "/" + 
+                       this.V[i].f + ")" + 
+                       "[" + this.V[i].color + "]" + ":");
+
+      // if the adjacency list row is empty
+      if (this.Adj[i] == null) {
+        System.out.println("NIL");
       }
-      System.out.println();
-    }
-  }
+      // otherwise
+      else {
+        for (int j = 0; j < this.Adj[i].length; j++) {
+          System.out.print(this.Adj[i][j].name + "(" + this.Adj[i][j].d + 
+                           "/" + this.Adj[i][j].f + ")" + 
+                           "[" + this.Adj[i][j].color + "]");
+
+          if ( (j + 1) != this.Adj[i].length ) {
+            System.out.print(",");
+          }
+        }//end: for (int j = 0; j < this.Adj[i].length; j++)
+        System.out.println();
+      }
+
+    }//end: for (int i = 0; i < this.V.length; i++)
+  }//end: public void printAdjTime()
+
   public Vertex[][] transpose() {
     // create new adjacency list
     Vertex[][] Adj_T = new Vertex[this.Adj.length][];
@@ -58,27 +76,37 @@ public class Graph {
     // for each vertex in V
     for (int i = 0; i < this.V.length; i++) {
 
+      // set counter to 0
       int counter = 0;
-
+      // set the new transpose adjacency list row to null
       Adj_T[i] = null;
 
+      // initial count to see how long each transpose adjacency list row should be
+      // for each vertex in the original adjacency list row
       for (int j = 0; j < this.Adj[i].length; j++) {
-        if (this.Adj[i][j].name == this.V[i].name) {
+        // if the current vertex appears
+        if (this.V[i].name == this.Adj[i][j].name) {
+          // then that vertex appears in a row, and it should be counted
           counter++;
         }
       }//end: for (int j = 0; j < this.Adj[i].length; j++)
 
+      // if the counter is greater than 0
       if (counter > 0) {
+        // create an adjacency list row for this vertex
         Adj_T[i] = new Vertex[counter];
-      }
+      }//end: if (counter > 0)
 
       int index = 0;
 
       for (int j = 0; j < this.Adj[i].length; j++) {
-        if (this.Adj[i][j].name == this.V[i].name) {
+        // if the current vertex appears
+        if (this.V[i].name == this.Adj[i][j].name) {
+          // then that vertex appears in a row, and it should be counted
           Adj_T[i][index++] = this.V[i];
         }
       }//end: for (int j = 0; j < this.Adj[i].length; j++)
+
     }//end: for (int i = 0; i < this.V.length; i++)
 
     return Adj_T;
