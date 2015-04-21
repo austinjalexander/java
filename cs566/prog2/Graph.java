@@ -37,13 +37,13 @@ public class Graph {
 
   // METHODS
   public void printV() {
-    System.out.println("\nprintV():");
+    //System.out.println("\nprintV():");
     for (Vertex u : this.V) {
       System.out.println(u.name);
     }
   }
   public void printAdj() {
-    System.out.println("\nprintAdj():");
+    //System.out.println("\nprintAdj():");
     for (int j = 0; j < this.Adj.length; j++) {
       if ( (this.Adj[j]) != null ) {
         for (int k = 0; k < this.Adj[j].length; k++) {
@@ -61,7 +61,7 @@ public class Graph {
   }
 
   public void printAdjTime() {
-    System.out.println("\nprintAdjTime():");
+    //System.out.println("\nprintAdjTime():");
     for (int i = 0; i < this.V.length; i++) {
 
       System.out.print(this.V[i].name + "(" + this.V[i].d + "/" + 
@@ -168,7 +168,7 @@ public class Graph {
   }
 
   public void printSCC() {
-    System.out.println("\nprintSCC():");
+    //System.out.println("\nprintSCC():");
     int counter = 1;
     for (int i = 0; i < this.V.length; i++) {
       if (this.Adj[i] == null) {

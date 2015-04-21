@@ -1,4 +1,4 @@
-// File: GraphTest.java
+// File: StronglyConnectedComponents.java
 // Student: Austin J. Alexander
 // Assignment: Programming Assignment 2
 // Course: MET CS566 (SPRING 2015)
@@ -9,7 +9,7 @@ import java.nio.file.Paths;
 import java.util.stream.Stream;
 
 // PUBLIC CLASS
-public class GraphTest {
+public class StronglyConnectedComponents {
 
   // GLOBAL VARIABLE
   public static int time;
@@ -22,84 +22,34 @@ public class GraphTest {
   // MAIN
   public static void main(String[] args) {
 
-    /*** TEST VERTEX ***/
-    Vertex vertex = new Vertex();
-    vertex.pi = new Vertex();
-    vertex.name = 1;
-    vertex.d = 1;
-    vertex.f = 2;
-    vertex.color = WHITE;
+    // WELCOME
+    System.out.println("\n<<< STRONGLY CONNECTED COMPONENTS PROGRAM >>>");
 
-    /*** TEST FILE I/O ***/
-    System.out.print("\n/*** TEST FILE I/O ***/");
-    try {
-      Stream<String> lines = Files.lines(Paths.get("test_input.txt"));
-      System.out.println("\nlines.forEach(s -> System.out.println(s)):");
-      lines.forEach(s -> System.out.println(s));
-    }
-    catch(Exception e) {
-      System.out.println(e);
-    }
-
-    /*** TEST STREAM TO STRINGS TO VERTICES ***/
-    System.out.print("\n/*** TEST STREAM TO STRINGS TO VERTICES ***/");
+    // IMPORT
     // create new graph
     Graph G = createGraph();
-    // check that V and Adj match input file
-    G.printV();
-    G.printAdj();
 
-    /*** TEST CLRS ALGORITHMS ***/
-    System.out.print("\n/*** TEST CLRS ALGORITHMS ***/");
-    // create new graph
-    G = createGraph();
-    // try DFS
+    /*** RUN SCC ALGORITHM ***/
+    System.out.print("\n*** RUN SCC ALGORITHM ***");
+    // DFS on G
+    System.out.println("\n(1) call DFS(G) to compute finishing times " +
+                       "u.f for each vertex u:\n");
     DFS(G);
     // check DFS
     G.printAdjTime();
 
-    /*** TEST MATRIX TRANSPOSE ***/
-    System.out.print("\n/*** TEST MATRIX TRANSPOSE ***/");
-    //(1)
-    System.out.print("\n(1)");
-    // create new graph
-    G = createGraph();
-    // create G transpose
+    // compute G transpose
+    System.out.println("\n(2) compute G^T:\n");
     Graph G_T = G;
-    G_T.Adj = G.transpose();
-    // check transpose
-    G_T.printAdj();
-
-    //(2)
-    System.out.print("\n(2)");
-    // create new graph
-    G = createGraph();
-    // try DFS
-    DFS(G);
-    // check DFS
-    G.printAdjTime();
-    // create G transpose
-    G_T = G;
     G_T.Adj = G.transpose();
     // check G transpose
     G_T.printAdjTime();
 
-    //(3)
-    System.out.print("\n(3)");
-    // create new graph
-    G = createGraph();
-    // try DFS
-    DFS(G);
-    // check DFS
-    G.printAdjTime();
-    // create G transpose
-    G_T = G;
-    G_T.Adj = G.transpose();
+    // DFS on G^T
+    System.out.println("\n(3) call DFS(G^T) but consider vertices in order " +
+                       "of decreasing u.f:\n");
     // reorder by u.f
     G_T.orderByFdesc();
-    // check order
-    G_T.printV();
-    // try DFS
     DFS(G_T);
     // check G transpose
     G_T.printAdjTime();
@@ -118,7 +68,11 @@ public class GraphTest {
     Graph G = new Graph();
 
     try {
-      Stream<String> lines = Files.lines(Paths.get("test_input.txt"));
+      Stream<String> lines = Files.lines(Paths.get("p3_input.txt"));
+      System.out.println("*** IMPORT GRAPH FROM ADJ LIST FILE ***");
+      lines.forEach(s -> System.out.println(s));
+
+      lines = Files.lines(Paths.get("p3_input.txt"));      
       String[] adj_list = lines.toArray(size -> new String[size]);
 
       // create graph
@@ -243,4 +197,4 @@ public class GraphTest {
     G.V[u_i].f = time;
   }//end: public static void DFS_VISIT(Graph G, Vertex u)
 
-}//end: public class GraphTest
+}//end: public class StronglyConnectedComponents
