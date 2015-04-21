@@ -7,7 +7,8 @@
 // (E.G., THE USE OF PUBLIC INSTANCE VARIABLES), 
 // PLEASE SEE THE NOTE (d) IN THE DOCUMENTATION FILE
 
-import java.util.ArrayList;
+// IMPORTS
+import java.io.PrintWriter;
 
 public class Graph {
 
@@ -84,9 +85,9 @@ public class Graph {
           }
         }//end: for (int j = 0; j < this.Adj[i].length; j++)
         System.out.println();
-      }
-
+      }// end: else
     }//end: for (int i = 0; i < this.V.length; i++)
+
   }//end: public void printAdjTime()
 
   public Vertex[][] transpose() {
@@ -179,7 +180,56 @@ public class Graph {
       }
       System.out.print(this.V[i].name + " ");
     }
-    System.out.println("}");
+    System.out.println("}\n");
+  }
+
+  public void outputSCCandAdjList() {
+    try {
+      PrintWriter writer = new PrintWriter("p3_output.txt", "UTF-8");
+      // SCC
+      int counter = 1;
+      for (int i = 0; i < this.V.length; i++) {
+        if (this.Adj[i] == null) {
+          if (counter > 1) {
+            writer.println("}");
+          }
+          writer.print("SCC " + (counter++) + ": { ");
+        }
+        writer.print(this.V[i].name + " ");
+      }
+      writer.println("}\n");
+
+      // ADJ LIST
+      for (int i = 0; i < this.V.length; i++) {
+
+        writer.print(this.V[i].name + "(" + this.V[i].d + "/" + 
+                         this.V[i].f + ")" + 
+                         "[" + this.V[i].color + "]" + ":");
+
+        // if the adjacency list row is empty
+        if (this.Adj[i] == null) {
+          writer.println("NIL");
+        }
+        // otherwise
+        else {
+          for (int j = 0; j < this.Adj[i].length; j++) {
+            writer.print(this.Adj[i][j].name + "(" + this.Adj[i][j].d + 
+                             "/" + this.Adj[i][j].f + ")" + 
+                             "[" + this.Adj[i][j].color + "]");
+
+            if ( (j + 1) != this.Adj[i].length ) {
+              writer.print(",");
+            }
+          }//end: for (int j = 0; j < this.Adj[i].length; j++)
+          writer.println();
+        }// end: else
+      }//end: for (int i = 0; i < this.V.length; i++)
+
+      writer.close();
+    }//end: try
+    catch(Exception e) {
+      System.out.println(e);
+    }//end: catch(Exception e)
   }
 
 }//end: public class Graph

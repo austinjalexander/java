@@ -33,7 +33,7 @@ public class GraphTest {
     /*** TEST FILE I/O ***/
     System.out.print("\n/*** TEST FILE I/O ***/");
     try {
-      Stream<String> lines = Files.lines(Paths.get("test_input.txt"));
+      Stream<String> lines = Files.lines(Paths.get("p3_input.txt"));
       System.out.println("\nlines.forEach(s -> System.out.println(s)):");
       lines.forEach(s -> System.out.println(s));
     }
@@ -118,7 +118,7 @@ public class GraphTest {
     Graph G = new Graph();
 
     try {
-      Stream<String> lines = Files.lines(Paths.get("test_input.txt"));
+      Stream<String> lines = Files.lines(Paths.get("p3_input.txt"));
       String[] adj_list = lines.toArray(size -> new String[size]);
 
       // create graph

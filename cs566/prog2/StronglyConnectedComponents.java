@@ -27,40 +27,49 @@ public class StronglyConnectedComponents {
 
     // IMPORT
     // create new graph
-    Graph G = createGraph();
+    Graph G = createGraph(args[0]);
 
     // RUN SCC ALGORITHM
     System.out.print("\n*** RUN SCC ALGORITHM ***");
-    // DFS on G
+
+    // (1)
     System.out.println("\n(1) call DFS(G) to compute finishing times " +
                        "u.f for each vertex u:\n");
+    // DFS on G
     DFS(G);
-    // check DFS
+    // display DFS results
     G.printAdjTime();
 
-    // compute G transpose
+    // (2)
     System.out.println("\n(2) compute G^T:\n");
+    // compute G transpose
     Graph G_T = G;
     G_T.Adj = G.transpose();
-    // check G transpose
+    // display G transpose
     G_T.printAdjTime();
 
-    // DFS on G^T
+    // (3)
     System.out.println("\n(3) call DFS(G^T) but consider vertices in order " +
                        "of decreasing u.f:\n");
     // reorder by u.f
     G_T.orderByFdesc();
+    // DFS on G^T
     DFS(G_T);
-    // check G transpose
+    // display G transpose
     G_T.printAdjTime();
     // reorder by u.f
     G_T.orderByFasc();
 
-    // output
+    // (4)
     System.out.println("\n(4) output the vertices of each tree in the depth-first " +
-                       "forest\n    as a strongly-connected component:\n");
-    // check SCC
+                       "forest\n    as a strongly-connected component; " +
+                       "vertices are in ascending\n    order of u.f from DFS(G^T):\n");
+    // display SCCs
     G_T.printSCC();
+    // display final adjacency list
+    G_T.printAdjTime();
+    // output to file
+    G_T.outputSCCandAdjList();
 
     // END PROGRAM
     System.out.println("\n<<< END PROGRAM >>>\n");
@@ -68,16 +77,16 @@ public class StronglyConnectedComponents {
   }//end: public static void main(String[] args)
 
   // HELPER METHODS
-  public static Graph createGraph() {
+  public static Graph createGraph(String filename) {
 
     Graph G = new Graph();
 
     try {
-      Stream<String> lines = Files.lines(Paths.get("p3_input.txt"));
+      Stream<String> lines = Files.lines(Paths.get(filename));
       System.out.println("*** IMPORT GRAPH FROM ADJ LIST FILE ***");
       lines.forEach(s -> System.out.println(s));
 
-      lines = Files.lines(Paths.get("p3_input.txt"));      
+      lines = Files.lines(Paths.get(filename));      
       String[] adj_list = lines.toArray(size -> new String[size]);
 
       // create graph

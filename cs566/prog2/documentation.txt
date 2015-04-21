@@ -1,22 +1,27 @@
-a) Java 8, Mac OS 10.9.5, Sublime Text, Terminal
+b) Java 8, Mac OS 10.9.5, Sublime Text, Terminal
 
-b) In a UNIX-like environment, if javac is installed, using a terminal, 
-change the current directory to the directory of this file 
-(and its associated files). Since there is an included Makefile, 
-if Make is installed, simply run 'make', which will run 
-'javac *.java && java IntegerStore'; if Make is not installed, 
-run the latter combination of commands or whatever is appropriate for 
-the user's system configurations.
+c) In a UNIX-like environment, if javac is installed, using a terminal, 
+   change the current directory to the directory of this file 
+   (and its associated files). Since there is an included Makefile, 
+   if Make is installed, simply run 'make', which will run 
+   'javac *.java && java StronglyConnectedComponents p3_input.txt'; 
+   if Make is not installed, run the latter combination of commands 
+   or whatever is appropriate for the user's system configurations.
 
-c) The data structure implemented is essentially a triply-linked list as each node 
-has the potential to link to a 'parent' and both left and right 'children'.
+   Once the program has been successfully compiled and run with the included 
+   input file, a different input file may be used by running 
+   'java StronglyConnectedComponents FILENAME', where FILENAME is the
+   name of the (text) input file with the proper format extension.
 
-d) As instructed, the implementation of the algorithms follow, 
-  as precisely as possible in Java, the algorithms presented as pseudocode in 
-  Corment, Leiserson, Rivest, and Stein's Introduction to Algorithms (3rd ed.).
-  From a software design perspective, the code is efficient to be sure
-  but, in my opinion, at the expense of human readability.
-  Moreover, common software design principles are ignored; 
-  for example, instance variables (e.g., root, key, etc.) are 
-  accessed/modified directly (and, thus, are public) as opposed to being 
-  accessed/modified only through 'getter'/'setter' methods.
+d) The data structure implemented is essentially a singly-linked list as each node   
+   ('vertex') has the potential to link to a 'parent' node.
+
+   As instructed, the implementation of the algorithms follow, 
+   as precisely as possible in Java, the algorithms presented as pseudocode in 
+   Corment, Leiserson, Rivest, and Stein's Introduction to Algorithms (3rd ed.).
+   From a software design perspective, the code is efficient to be sure
+   but, in my opinion, at the expense of human readability.
+   Moreover, common software design principles are ignored; 
+   for example, instance variables (e.g., pi, name, etc.) are 
+   accessed/modified directly (and, thus, are public) as opposed to being 
+   accessed/modified only through 'getter'/'setter' methods.
