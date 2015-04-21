@@ -7,6 +7,8 @@
 // (E.G., THE USE OF PUBLIC INSTANCE VARIABLES), 
 // PLEASE SEE THE NOTE (d) IN THE DOCUMENTATION FILE
 
+import java.util.ArrayList;
+
 public class Graph {
 
   // INSTANCE VARIABLES
@@ -23,6 +25,16 @@ public class Graph {
     this.Adj = new Vertex[number_of_vertices][];
   }
 
+  // GETTERS
+  public Integer getIndex(Vertex u) {
+    for (int i = 0; i < this.V.length; i++) {
+      if (this.V[i].name == u.name) {
+        return i;
+      }
+    }
+    return null;
+  }
+
   // METHODS
   public void printV() {
     System.out.println("\nprintV():");
@@ -32,9 +44,17 @@ public class Graph {
   }
   public void printAdj() {
     System.out.println("\nprintAdj():");
-    for (Vertex[] list : this.Adj) {
-      for (Vertex u : list) {
-        System.out.print(u.name + ",");
+    for (int j = 0; j < this.Adj.length; j++) {
+      if ( (this.Adj[j]) != null ) {
+        for (int k = 0; k < this.Adj[j].length; k++) {
+          System.out.print(this.Adj[j][k].name);
+          if ( (k + 1) != this.Adj[j].length ) {
+            System.out.print(",");
+          }
+        }
+      }
+      else {
+        System.out.print("NIL");
       }
       System.out.println();
     }
@@ -73,44 +93,94 @@ public class Graph {
     // create new adjacency list
     Vertex[][] Adj_T = new Vertex[this.Adj.length][];
 
-    // for each vertex in V
+    // for each v in V
     for (int i = 0; i < this.V.length; i++) {
 
-      // set counter to 0
       int counter = 0;
-      // set the new transpose adjacency list row to null
-      Adj_T[i] = null;
+      /* count the number of times 
+       * the current vertex in V occurs
+       * in the entire adjacency list Adj */
+      // for each sub list in Adj
+      for (Vertex[] list : this.Adj) {
+        // for each vertex in each sub list
+        for (Vertex v : list) {
+          // if the current vertex in V occurs
+          // in the current sub list
+          if (this.V[i].name == v.name) {
+            counter++;
+          }
+        }//end: for (Vertex v : list)
+      }//end: for (Vertex[] list : this.Adj)
 
-      // initial count to see how long each transpose adjacency list row should be
-      // for each vertex in the original adjacency list row
-      for (int j = 0; j < this.Adj[i].length; j++) {
-        // if the current vertex appears
-        if (this.V[i].name == this.Adj[i][j].name) {
-          // then that vertex appears in a row, and it should be counted
-          counter++;
-        }
-      }//end: for (int j = 0; j < this.Adj[i].length; j++)
-
-      // if the counter is greater than 0
+      // use the counter to make
+      // sub lists where relevant
       if (counter > 0) {
-        // create an adjacency list row for this vertex
         Adj_T[i] = new Vertex[counter];
-      }//end: if (counter > 0)
+      }
 
       int index = 0;
-
-      for (int j = 0; j < this.Adj[i].length; j++) {
-        // if the current vertex appears
-        if (this.V[i].name == this.Adj[i][j].name) {
-          // then that vertex appears in a row, and it should be counted
-          Adj_T[i][index++] = this.V[i];
-        }
-      }//end: for (int j = 0; j < this.Adj[i].length; j++)
-
+      // for each element in the adjacency list Adj,
+      // if the current vertex in V occurs,
+      // place the parent vertex in the new 
+      // transposed adjacency list in the proper location
+      for (int j = 0; j < this.Adj.length; j++) {
+        for (int k = 0; k < this.Adj[j].length; k++) {
+          if (this.V[i].name == this.Adj[j][k].name) {
+            Adj_T[i][index++] = this.V[j];
+          }
+        }//end: for (int k = 0; k < this.Adj[j].length; k++)
+      }//end: for (int j = 0; j < this.Adj.length; j++)
     }//end: for (int i = 0; i < this.V.length; i++)
 
     return Adj_T;
   }//end: public Graph transpose()
+
+  public void orderByFdesc() {
+    for (int i = 0; i < this.V.length; i++) {
+      for (int j = 0; j < this.V.length; j++) {
+        if (this.V[i].f > this.V[j].f) {
+          Vertex temp = this.V[j];
+          this.V[j] = this.V[i];
+          this.V[i] = temp;
+
+          Vertex[] temp_array = this.Adj[j];
+          this.Adj[j] = this.Adj[i];
+          this.Adj[i] = temp_array;
+        }
+      }
+    }
+  }
+
+  public void orderByFasc() {
+    for (int i = 0; i < this.V.length; i++) {
+      for (int j = 0; j < this.V.length; j++) {
+        if (this.V[i].f < this.V[j].f) {
+          Vertex temp = this.V[j];
+          this.V[j] = this.V[i];
+          this.V[i] = temp;
+
+          Vertex[] temp_array = this.Adj[j];
+          this.Adj[j] = this.Adj[i];
+          this.Adj[i] = temp_array;
+        }
+      }
+    }
+  }
+
+  public void printSCC() {
+    System.out.println("\nprintSCC():");
+    int counter = 1;
+    for (int i = 0; i < this.V.length; i++) {
+      if (this.Adj[i] == null) {
+        if (counter > 1) {
+          System.out.println("}");
+        }
+        System.out.print("SCC" + (counter++) + ": { ");
+      }
+      System.out.print(this.V[i].name + " ");
+    }
+    System.out.println("}");
+  }
 
 }//end: public class Graph
 
