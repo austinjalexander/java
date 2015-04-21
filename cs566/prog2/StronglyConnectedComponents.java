@@ -23,13 +23,13 @@ public class StronglyConnectedComponents {
   public static void main(String[] args) {
 
     // WELCOME
-    System.out.println("\n<<< STRONGLY CONNECTED COMPONENTS PROGRAM >>>");
+    System.out.println("\n<<< STRONGLY-CONNECTED COMPONENTS PROGRAM >>>");
 
     // IMPORT
     // create new graph
     Graph G = createGraph();
 
-    /*** RUN SCC ALGORITHM ***/
+    // RUN SCC ALGORITHM
     System.out.print("\n*** RUN SCC ALGORITHM ***");
     // DFS on G
     System.out.println("\n(1) call DFS(G) to compute finishing times " +
@@ -55,10 +55,15 @@ public class StronglyConnectedComponents {
     G_T.printAdjTime();
     // reorder by u.f
     G_T.orderByFasc();
-    // check order
-    G_T.printV();
+
+    // output
+    System.out.println("\n(4) output the vertices of each tree in the depth-first " +
+                       "forest\n    as a strongly-connected component:\n");
     // check SCC
     G_T.printSCC();
+
+    // END PROGRAM
+    System.out.println("\n<<< END PROGRAM >>>\n");
 
   }//end: public static void main(String[] args)
 

@@ -175,7 +175,7 @@ public class Graph {
         if (counter > 1) {
           System.out.println("}");
         }
-        System.out.print("SCC" + (counter++) + ": { ");
+        System.out.print("SCC " + (counter++) + ": { ");
       }
       System.out.print(this.V[i].name + " ");
     }
