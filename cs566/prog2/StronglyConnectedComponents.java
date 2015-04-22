@@ -50,7 +50,7 @@ public class StronglyConnectedComponents {
 
     // (3)
     System.out.println("\n(3) call DFS(G^T) but consider vertices in order " +
-                       "of decreasing u.f:\n");
+                       "of decreasing u.f from DFS(G):\n");
     // reorder by u.f
     G_T.orderByFdesc();
     // DFS on G^T

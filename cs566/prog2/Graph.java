@@ -172,7 +172,7 @@ public class Graph {
     //System.out.println("\nprintSCC():");
     int counter = 1;
     for (int i = 0; i < this.V.length; i++) {
-      if (this.Adj[i] == null) {
+      if ( (this.Adj[i] == null) || (i == 0) ) {
         if (counter > 1) {
           System.out.println("}");
         }
@@ -189,7 +189,7 @@ public class Graph {
       // SCC
       int counter = 1;
       for (int i = 0; i < this.V.length; i++) {
-        if (this.Adj[i] == null) {
+        if ( (this.Adj[i] == null) || (i == 0) ) {
           if (counter > 1) {
             writer.println("}");
           }
