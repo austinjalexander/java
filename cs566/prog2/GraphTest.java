@@ -3,6 +3,12 @@
 // Assignment: Programming Assignment 2
 // Course: MET CS566 (SPRING 2015)
 
+/*** THIS FILE IS FOR TESTING PURPOSES ONLY ***/
+
+// REGARDING THE IMPLEMENTATION DETAILS BELOW 
+// (E.G., THE USE OF PUBLIC INSTANCE VARIABLES), 
+// PLEASE SEE THE NOTE (d) IN THE DOCUMENTATION FILE
+
 // IMPORTS
 import java.nio.file.Files;
 import java.nio.file.Paths;

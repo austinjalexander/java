@@ -3,6 +3,10 @@
 // Assignment: Programming Assignment 2
 // Course: MET CS566 (SPRING 2015)
 
+// REGARDING THE IMPLEMENTATION DETAILS BELOW 
+// (E.G., THE USE OF PUBLIC INSTANCE VARIABLES), 
+// PLEASE SEE THE NOTE (d) IN THE DOCUMENTATION FILE
+
 // IMPORTS
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -77,6 +81,7 @@ public class StronglyConnectedComponents {
   }//end: public static void main(String[] args)
 
   // HELPER METHODS
+  // method to create a graph using file input
   public static Graph createGraph(String filename) {
 
     Graph G = new Graph();

@@ -37,12 +37,14 @@ public class Graph {
   }
 
   // METHODS
+  // prints each vertex name in the graph
   public void printV() {
     //System.out.println("\nprintV():");
     for (Vertex u : this.V) {
       System.out.println(u.name);
     }
   }
+  // print each sub list in the adjacency list
   public void printAdj() {
     //System.out.println("\nprintAdj():");
     for (int j = 0; j < this.Adj.length; j++) {
@@ -61,6 +63,7 @@ public class Graph {
     }
   }
 
+  // print an adjacency list with timestamps and color
   public void printAdjTime() {
     //System.out.println("\nprintAdjTime():");
     for (int i = 0; i < this.V.length; i++) {
@@ -90,6 +93,7 @@ public class Graph {
 
   }//end: public void printAdjTime()
 
+  // transpose the current graph
   public Vertex[][] transpose() {
     // create new adjacency list
     Vertex[][] Adj_T = new Vertex[this.Adj.length][];
@@ -136,6 +140,7 @@ public class Graph {
     return Adj_T;
   }//end: public Graph transpose()
 
+  // order vertices by descending u.f
   public void orderByFdesc() {
     for (int i = 0; i < this.V.length; i++) {
       for (int j = 0; j < this.V.length; j++) {
@@ -152,6 +157,7 @@ public class Graph {
     }
   }
 
+  // order vertices by ascending u.f
   public void orderByFasc() {
     for (int i = 0; i < this.V.length; i++) {
       for (int j = 0; j < this.V.length; j++) {
@@ -168,6 +174,7 @@ public class Graph {
     }
   }
 
+  // print strongly-connected components as sets of vertices
   public void printSCC() {
     //System.out.println("\nprintSCC():");
     int counter = 1;
@@ -183,6 +190,8 @@ public class Graph {
     System.out.println("}\n");
   }
 
+  // output the strongly-connected components as sets of vertices
+  // and the adjacency list with timestamps and color
   public void outputSCCandAdjList() {
     try {
       PrintWriter writer = new PrintWriter("p3_output.txt", "UTF-8");
