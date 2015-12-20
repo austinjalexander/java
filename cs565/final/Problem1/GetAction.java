@@ -1,4 +1,4 @@
-// GetAction.java: NAMED, EXTERNAL CLASS REPLACEMENT FOR AN ANONYMOUS INNER CLASS
+// GetAction.java: NAMED, EXTERNAL CLASS REPLACEMENT FOR THE ANONYMOUS INNER CLASS
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JTextArea;

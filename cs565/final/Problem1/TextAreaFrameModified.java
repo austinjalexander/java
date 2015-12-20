@@ -33,7 +33,7 @@ public class TextAreaFrameModified extends JFrame {
 
       /*** AJA NOTES ***/
       // ASIDE FROM MOVING SOME THINGS AROUND, THE FOLLOWING TWO LINES
-      // ARE THE PRIMARY LINES MODIFIED IN THIS FILE:
+      // ARE THE PRIMARY LINES MODIFIED FROM THE ORIGINAL TextAreaFrame.java FILE:
       GetAction get_action = new GetAction(textArea1,textArea2);
       copyJButton.addActionListener(get_action);
 

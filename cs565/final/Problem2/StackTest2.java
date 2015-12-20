@@ -52,6 +52,7 @@ public class StackTest2 {
     testDisplay("integerStack", integerStack);
     testPop("integerStack", integerStack);
 
+    System.out.println("\n");
   }
 
   // generic method testPush pushes elements onto a Stack
@@ -65,14 +66,14 @@ public class StackTest2 {
     }
   }
 
-  /*** AJA ***/
+  /*** AJA: DISPLAY CALLING METHOD ***/
   // generic method testDisplay displays all elements in a Stack
   public static <T> void testDisplay(String name, Stack<T> stack) {
     System.out.printf("%n%nDisplaying elements from %s: %s%n", 
                       name, stack.display());
   }
 
-  /*** AJA ***/
+  /*** AJA: PEEK CALLING METHOD ***/
   // generic method testPeek peeks at the next element from a Stack
   public static <T> void testPeek(String name, Stack<T> stack) {
     // pop elements from stack
